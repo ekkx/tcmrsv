@@ -2,13 +2,20 @@ package tcmrsv
 
 import (
 	"fmt"
-	"io"
+	"net/http"
 	"net/url"
 	"time"
 )
 
+type Campus int
+
+const (
+	CampusIkebukuro  Campus = 1
+	CampusNakameguro Campus = 2
+)
+
 type ReserveParams struct {
-	Campus     int
+	Campus     Campus
 	RoomID     string
 	Start      time.Time
 	FromHour   int
@@ -17,7 +24,7 @@ type ReserveParams struct {
 	ToMinute   int
 }
 
-func (rsv *TCMRSV) Reserve(params *ReserveParams) ([]byte, error) {
+func (rsv *TCMRSV) Reserve(params *ReserveParams) (*http.Response, error) {
 	u, err := url.Parse(ENDPOINT_RESERVATION)
 	if err != nil {
 		panic(err)
@@ -54,7 +61,5 @@ func (rsv *TCMRSV) Reserve(params *ReserveParams) ([]byte, error) {
 	}
 	defer res.Body.Close()
 
-	body, _ := io.ReadAll(res.Body)
-
-	return body, nil
+	return res, nil
 }

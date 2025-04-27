@@ -1,7 +1,7 @@
 package tcmrsv
 
 import (
-	"io"
+	"net/http"
 	"net/url"
 )
 
@@ -10,7 +10,7 @@ type LoginParams struct {
 	Password string
 }
 
-func (rsv *TCMRSV) Login(params *LoginParams) ([]byte, error) {
+func (rsv *TCMRSV) Login(params *LoginParams) (*http.Response, error) {
 	res, err := rsv.client.Get(ENDPOINT_LOGIN)
 	if err != nil {
 		panic(err)
@@ -35,7 +35,5 @@ func (rsv *TCMRSV) Login(params *LoginParams) ([]byte, error) {
 	}
 	defer res.Body.Close()
 
-	body, _ := io.ReadAll(res.Body)
-
-	return body, nil
+	return res, nil
 }
