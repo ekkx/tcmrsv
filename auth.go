@@ -1,0 +1,41 @@
+package tcmrsv
+
+import (
+	"io"
+	"net/url"
+)
+
+type LoginParams struct {
+	ID       string
+	Password string
+}
+
+func (rsv *TCMRSV) Login(params *LoginParams) ([]byte, error) {
+	res, err := rsv.client.Get(ENDPOINT_LOGIN)
+	if err != nil {
+		panic(err)
+	}
+	defer res.Body.Close()
+
+	rsv.aspcfg.Update(res.Body)
+
+	form := url.Values{}
+	form.Set("__EVENTTARGET", "")
+	form.Set("__EVENTARGUMENT", "")
+	form.Set("__VIEWSTATE", rsv.aspcfg.ViewState)
+	form.Set("__VIEWSTATEGENERATOR", rsv.aspcfg.ViewStateGenerator)
+	form.Set("__EVENTVALIDATION", rsv.aspcfg.EventValidation)
+	form.Set("input_id", params.ID)
+	form.Set("input_pass", params.Password)
+	form.Set("btnLogin", "")
+
+	res, err = rsv.client.PostForm(ENDPOINT_LOGIN, form)
+	if err != nil {
+		return nil, err
+	}
+	defer res.Body.Close()
+
+	body, _ := io.ReadAll(res.Body)
+
+	return body, nil
+}
