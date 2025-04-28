@@ -6,14 +6,14 @@ import (
 )
 
 type LoginParams struct {
-	ID       string
+	UserID   string
 	Password string
 }
 
 func (rsv *TCMRSV) Login(params *LoginParams) (*http.Response, error) {
 	res, err := rsv.client.Get(ENDPOINT_LOGIN)
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 	defer res.Body.Close()
 
@@ -25,7 +25,7 @@ func (rsv *TCMRSV) Login(params *LoginParams) (*http.Response, error) {
 	form.Set("__VIEWSTATE", rsv.aspcfg.ViewState)
 	form.Set("__VIEWSTATEGENERATOR", rsv.aspcfg.ViewStateGenerator)
 	form.Set("__EVENTVALIDATION", rsv.aspcfg.EventValidation)
-	form.Set("input_id", params.ID)
+	form.Set("input_id", params.UserID)
 	form.Set("input_pass", params.Password)
 	form.Set("btnLogin", "")
 

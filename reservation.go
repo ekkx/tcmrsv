@@ -2,22 +2,125 @@ package tcmrsv
 
 import (
 	"fmt"
+	"io"
 	"net/http"
 	"net/url"
+	"strings"
 	"time"
+
+	"golang.org/x/net/html"
 )
 
-type Campus int
+func (rsv *TCMRSV) GetMyReservations() ([]Reservation, error) {
+	res, err := rsv.client.Get(ENDPOINT_INDEX)
+	if err != nil {
+		return nil, err
+	}
+	defer res.Body.Close()
 
-const (
-	CampusIkebukuro  Campus = 1
-	CampusNakameguro Campus = 2
-)
+	z := html.NewTokenizer(res.Body)
+
+	var (
+		reservations          []Reservation
+		insideReservationList bool
+		currentReservation    *Reservation
+		currentTag            string
+	)
+
+	var campusMap = map[string]Campus{
+		"池袋キャンパス":      CampusIkebukuro,
+		"中目黒・代官山キャンパス": CampusNakameguro,
+	}
+
+	for {
+		tt := z.Next()
+		switch tt {
+		case html.ErrorToken:
+			if z.Err() == io.EOF {
+				return reservations, nil
+			}
+			return nil, z.Err()
+
+		case html.StartTagToken, html.SelfClosingTagToken:
+			t := z.Token()
+
+			switch t.Data {
+			case "div":
+				for _, attr := range t.Attr {
+					if attr.Key == "id" && attr.Val == "reservation-list" {
+						insideReservationList = true
+					}
+				}
+
+			case "dl":
+				if insideReservationList {
+					currentReservation = &Reservation{}
+				}
+
+			case "dt", "dd":
+				currentTag = ""
+				for _, attr := range t.Attr {
+					if attr.Key == "class" {
+						currentTag = attr.Val
+						break
+					}
+				}
+				if currentTag == "" {
+					currentTag = "campus"
+				}
+
+			case "a":
+				if insideReservationList && currentReservation != nil && currentTag == "res-cancell" {
+					for _, attr := range t.Attr {
+						if attr.Key == "href" {
+							if idx := strings.Index(attr.Val, "id="); idx >= 0 {
+								id := attr.Val[idx+3:]
+								currentReservation.ID = strings.TrimSpace(id)
+							}
+						}
+					}
+				}
+			}
+
+		case html.TextToken:
+			if insideReservationList && currentReservation != nil {
+				text := strings.TrimSpace(z.Token().Data)
+				if text != "" {
+					switch currentTag {
+					case "campus":
+						if campus, ok := campusMap[text]; ok {
+							currentReservation.Campus = campus
+						} else {
+							currentReservation.Campus = CampusUnknown
+						}
+						currentReservation.CampusName = text
+					case "res-date":
+						currentReservation.Date = text
+					case "res-time":
+						currentReservation.TimeRange = text
+					case "res-room":
+						currentReservation.RoomName = text
+					}
+				}
+			}
+
+		case html.EndTagToken:
+			t := z.Token()
+			if t.Data == "dl" && insideReservationList && currentReservation != nil {
+				// 変な空構造体が入るので簡単に検証
+				if currentReservation.CampusName != "" || currentReservation.ID != "" {
+					reservations = append(reservations, *currentReservation)
+				}
+				currentReservation = nil
+			}
+		}
+	}
+}
 
 type ReserveParams struct {
 	Campus     Campus
 	RoomID     string
-	Start      time.Time
+	Date       time.Time
 	FromHour   int
 	FromMinute int
 	ToHour     int
@@ -25,15 +128,15 @@ type ReserveParams struct {
 }
 
 func (rsv *TCMRSV) Reserve(params *ReserveParams) (*http.Response, error) {
-	u, err := url.Parse(ENDPOINT_RESERVATION)
+	u, err := url.Parse(ENDPOINT_CONFIRMS)
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 
 	q := u.Query()
-	q.Set("campus", fmt.Sprintf("%d", params.Campus))
+	q.Set("campus", string(params.Campus))
 	q.Set("room", params.RoomID)
-	q.Set("ymd", params.Start.Format("2006/01/02 15:04:05"))
+	q.Set("ymd", params.Date.Format("2006/01/02 15:04:05"))
 	q.Set("fromh", fmt.Sprintf("%02d", params.FromHour))
 	q.Set("fromm", fmt.Sprintf("%02d", params.FromMinute)) // TODO: 00 か 30 バリデートする
 	q.Set("toh", fmt.Sprintf("%02d", params.ToHour))
@@ -43,7 +146,7 @@ func (rsv *TCMRSV) Reserve(params *ReserveParams) (*http.Response, error) {
 	confirmUrl := u.String()
 	res, err := rsv.client.Get(confirmUrl)
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 	defer res.Body.Close()
 
@@ -56,6 +159,48 @@ func (rsv *TCMRSV) Reserve(params *ReserveParams) (*http.Response, error) {
 	form.Set("KakuteiButton", "")
 
 	res, err = rsv.client.PostForm(confirmUrl, form)
+	if err != nil {
+		return nil, err
+	}
+	defer res.Body.Close()
+
+	return res, nil
+}
+
+type CancelReservationParams struct {
+	ReservationID string
+	Comment       string
+}
+
+func (rsv *TCMRSV) CancelReservation(params *CancelReservationParams) (*http.Response, error) {
+	u, err := url.Parse(ENDPOINT_CANCEL_RESERVATION)
+	if err != nil {
+		return nil, err
+	}
+
+	q := u.Query()
+	q.Set("id", string(params.ReservationID))
+	u.RawQuery = q.Encode()
+
+	cancelUrl := u.String()
+	res, err := rsv.client.Get(cancelUrl)
+	if err != nil {
+		return nil, err
+	}
+	defer res.Body.Close()
+
+	rsv.aspcfg.Update(res.Body)
+
+	form := url.Values{}
+	form.Set("__EVENTTARGET", "")
+	form.Set("__EVENTARGUMENT", "")
+	form.Set("__VIEWSTATE", rsv.aspcfg.ViewState)
+	form.Set("__VIEWSTATEGENERATOR", rsv.aspcfg.ViewStateGenerator)
+	form.Set("__EVENTVALIDATION", rsv.aspcfg.EventValidation)
+	form.Set("freeword", params.Comment)
+	form.Set("YoyakuCancelButton", "")
+
+	res, err = rsv.client.PostForm(cancelUrl, form)
 	if err != nil {
 		return nil, err
 	}
