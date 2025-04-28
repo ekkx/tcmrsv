@@ -12,7 +12,12 @@ import (
 )
 
 func (rsv *TCMRSV) GetMyReservations() ([]Reservation, error) {
-	res, err := rsv.client.Get(ENDPOINT_INDEX)
+	req, err := http.NewRequest(http.MethodGet, ENDPOINT_INDEX, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	res, err := rsv.DoRequest(req)
 	if err != nil {
 		return nil, err
 	}
@@ -60,9 +65,17 @@ func (rsv *TCMRSV) GetMyReservations() ([]Reservation, error) {
 			case "dt", "dd":
 				currentTag = ""
 				for _, attr := range t.Attr {
-					if attr.Key == "class" {
-						currentTag = attr.Val
-						break
+					switch attr.Key {
+					case "class":
+						if t.Data == "dt" && attr.Val == "res-room" {
+							currentTag = "campus"
+						} else {
+							currentTag = attr.Val
+						}
+					case "style":
+						if strings.Contains(attr.Val, "width:160px") {
+							currentTag = "campus"
+						}
 					}
 				}
 				if currentTag == "" {
@@ -143,8 +156,12 @@ func (rsv *TCMRSV) Reserve(params *ReserveParams) (*http.Response, error) {
 	q.Set("tom", fmt.Sprintf("%02d", params.ToMinute)) // TODO: 00 か 30 バリデートする
 	u.RawQuery = q.Encode()
 
-	confirmUrl := u.String()
-	res, err := rsv.client.Get(confirmUrl)
+	req, err := http.NewRequest(http.MethodGet, u.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	res, err := rsv.DoRequest(req)
 	if err != nil {
 		return nil, err
 	}
@@ -158,13 +175,13 @@ func (rsv *TCMRSV) Reserve(params *ReserveParams) (*http.Response, error) {
 	form.Set("__EVENTVALIDATION", rsv.aspcfg.EventValidation)
 	form.Set("KakuteiButton", "")
 
-	res, err = rsv.client.PostForm(confirmUrl, form)
+	req, err = http.NewRequest(http.MethodPost, u.String(), strings.NewReader(form.Encode()))
 	if err != nil {
 		return nil, err
 	}
-	defer res.Body.Close()
+	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 
-	return res, nil
+	return rsv.DoRequest(req)
 }
 
 type CancelReservationParams struct {
@@ -182,8 +199,12 @@ func (rsv *TCMRSV) CancelReservation(params *CancelReservationParams) (*http.Res
 	q.Set("id", string(params.ReservationID))
 	u.RawQuery = q.Encode()
 
-	cancelUrl := u.String()
-	res, err := rsv.client.Get(cancelUrl)
+	req, err := http.NewRequest(http.MethodGet, u.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	res, err := rsv.DoRequest(req)
 	if err != nil {
 		return nil, err
 	}
@@ -200,11 +221,11 @@ func (rsv *TCMRSV) CancelReservation(params *CancelReservationParams) (*http.Res
 	form.Set("freeword", params.Comment)
 	form.Set("YoyakuCancelButton", "")
 
-	res, err = rsv.client.PostForm(cancelUrl, form)
+	req, err = http.NewRequest(http.MethodPost, u.String(), strings.NewReader(form.Encode()))
 	if err != nil {
 		return nil, err
 	}
-	defer res.Body.Close()
+	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 
-	return res, nil
+	return rsv.DoRequest(req)
 }

@@ -3,6 +3,7 @@ package tcmrsv
 import (
 	"net/http"
 	"net/url"
+	"strings"
 )
 
 type LoginParams struct {
@@ -11,7 +12,12 @@ type LoginParams struct {
 }
 
 func (rsv *TCMRSV) Login(params *LoginParams) (*http.Response, error) {
-	res, err := rsv.client.Get(ENDPOINT_LOGIN)
+	req, err := http.NewRequest(http.MethodGet, ENDPOINT_LOGIN, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	res, err := rsv.DoRequest(req)
 	if err != nil {
 		return nil, err
 	}
@@ -29,11 +35,11 @@ func (rsv *TCMRSV) Login(params *LoginParams) (*http.Response, error) {
 	form.Set("input_pass", params.Password)
 	form.Set("btnLogin", "")
 
-	res, err = rsv.client.PostForm(ENDPOINT_LOGIN, form)
+	req, err = http.NewRequest(http.MethodPost, ENDPOINT_LOGIN, strings.NewReader(form.Encode()))
 	if err != nil {
 		return nil, err
 	}
-	defer res.Body.Close()
+	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 
-	return res, nil
+	return rsv.DoRequest(req)
 }

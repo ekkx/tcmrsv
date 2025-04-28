@@ -2,6 +2,7 @@ package tcmrsv
 
 import (
 	"io"
+	"net/http"
 	"net/url"
 	"strconv"
 	"strings"
@@ -26,7 +27,12 @@ func (rsv *TCMRSV) GetRoomAvailability(params *GetRoomAvailabilityParams) ([]Roo
 	q.Set("ymd", params.Date.Format("2006/01/02 15:04:05"))
 	u.RawQuery = q.Encode()
 
-	res, err := rsv.client.Get(u.String())
+	req, err := http.NewRequest(http.MethodGet, u.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	res, err := rsv.DoRequest(req)
 	if err != nil {
 		return nil, err
 	}
