@@ -11,19 +11,17 @@ type LoginParams struct {
 	Password string
 }
 
-func (rsv *TCMRSV) Login(params *LoginParams) (*http.Response, error) {
+func (rsv *TCMRSV) Login(params *LoginParams) error {
 	req, err := http.NewRequest(http.MethodGet, ENDPOINT_LOGIN, nil)
 	if err != nil {
-		return nil, err
+		return err
 	}
 
-	res, err := rsv.DoRequest(req)
+	res, err := rsv.DoRequest(req, false)
 	if err != nil {
-		return nil, err
+		return err
 	}
 	defer res.Body.Close()
-
-	rsv.aspcfg.Update(res.Body)
 
 	form := url.Values{}
 	form.Set("__EVENTTARGET", "")
@@ -37,9 +35,15 @@ func (rsv *TCMRSV) Login(params *LoginParams) (*http.Response, error) {
 
 	req, err = http.NewRequest(http.MethodPost, ENDPOINT_LOGIN, strings.NewReader(form.Encode()))
 	if err != nil {
-		return nil, err
+		return err
 	}
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 
-	return rsv.DoRequest(req)
+	res, err = rsv.DoRequest(req, true)
+	if err != nil {
+		return err
+	}
+	defer res.Body.Close()
+
+	return nil
 }

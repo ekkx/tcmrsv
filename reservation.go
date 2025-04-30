@@ -17,7 +17,7 @@ func (rsv *TCMRSV) GetMyReservations() ([]Reservation, error) {
 		return nil, err
 	}
 
-	res, err := rsv.DoRequest(req)
+	res, err := rsv.DoRequest(req, true)
 	if err != nil {
 		return nil, err
 	}
@@ -140,16 +140,18 @@ type ReserveParams struct {
 	ToMinute   int
 }
 
-func (rsv *TCMRSV) Reserve(params *ReserveParams) (*http.Response, error) {
+func (rsv *TCMRSV) Reserve(params *ReserveParams) error {
 	u, err := url.Parse(ENDPOINT_CONFIRMS)
 	if err != nil {
-		return nil, err
+		return err
 	}
+
+	jstDate := time.Date(params.Date.Year(), params.Date.Month(), params.Date.Day(), 0, 0, 0, 0, jst())
 
 	q := u.Query()
 	q.Set("campus", string(params.Campus))
 	q.Set("room", params.RoomID)
-	q.Set("ymd", params.Date.Format("2006/01/02 15:04:05"))
+	q.Set("ymd", jstDate.Format("2006/01/02 15:04:05"))
 	q.Set("fromh", fmt.Sprintf("%02d", params.FromHour))
 	q.Set("fromm", fmt.Sprintf("%02d", params.FromMinute)) // TODO: 00 か 30 バリデートする
 	q.Set("toh", fmt.Sprintf("%02d", params.ToHour))
@@ -158,16 +160,14 @@ func (rsv *TCMRSV) Reserve(params *ReserveParams) (*http.Response, error) {
 
 	req, err := http.NewRequest(http.MethodGet, u.String(), nil)
 	if err != nil {
-		return nil, err
+		return err
 	}
 
-	res, err := rsv.DoRequest(req)
+	res, err := rsv.DoRequest(req, true)
 	if err != nil {
-		return nil, err
+		return err
 	}
 	defer res.Body.Close()
-
-	rsv.aspcfg.Update(res.Body)
 
 	form := url.Values{}
 	form.Set("__VIEWSTATE", rsv.aspcfg.ViewState)
@@ -177,11 +177,25 @@ func (rsv *TCMRSV) Reserve(params *ReserveParams) (*http.Response, error) {
 
 	req, err = http.NewRequest(http.MethodPost, u.String(), strings.NewReader(form.Encode()))
 	if err != nil {
-		return nil, err
+		return err
 	}
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 
-	return rsv.DoRequest(req)
+	res, err = rsv.DoRequest(req, true)
+	if err != nil {
+		return err
+	}
+
+	bodyBytes, err := io.ReadAll(res.Body)
+	if err != nil {
+		return err
+	}
+
+	if !strings.Contains(string(bodyBytes), "予約が完了しました") {
+		return ErrCreateReservationFailed
+	}
+
+	return nil
 }
 
 type CancelReservationParams struct {
@@ -189,10 +203,10 @@ type CancelReservationParams struct {
 	Comment       string
 }
 
-func (rsv *TCMRSV) CancelReservation(params *CancelReservationParams) (*http.Response, error) {
+func (rsv *TCMRSV) CancelReservation(params *CancelReservationParams) error {
 	u, err := url.Parse(ENDPOINT_CANCEL_RESERVATION)
 	if err != nil {
-		return nil, err
+		return err
 	}
 
 	q := u.Query()
@@ -201,16 +215,14 @@ func (rsv *TCMRSV) CancelReservation(params *CancelReservationParams) (*http.Res
 
 	req, err := http.NewRequest(http.MethodGet, u.String(), nil)
 	if err != nil {
-		return nil, err
+		return err
 	}
 
-	res, err := rsv.DoRequest(req)
+	res, err := rsv.DoRequest(req, true)
 	if err != nil {
-		return nil, err
+		return err
 	}
 	defer res.Body.Close()
-
-	rsv.aspcfg.Update(res.Body)
 
 	form := url.Values{}
 	form.Set("__EVENTTARGET", "")
@@ -223,9 +235,23 @@ func (rsv *TCMRSV) CancelReservation(params *CancelReservationParams) (*http.Res
 
 	req, err = http.NewRequest(http.MethodPost, u.String(), strings.NewReader(form.Encode()))
 	if err != nil {
-		return nil, err
+		return err
 	}
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 
-	return rsv.DoRequest(req)
+	res, err = rsv.DoRequest(req, true)
+	if err != nil {
+		return err
+	}
+
+	bodyBytes, err := io.ReadAll(res.Body)
+	if err != nil {
+		return err
+	}
+
+	if !strings.Contains(string(bodyBytes), "予約キャンセル完了") {
+		return ErrCancelReservationFailed
+	}
+
+	return nil
 }

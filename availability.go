@@ -22,9 +22,11 @@ func (rsv *TCMRSV) GetRoomAvailability(params *GetRoomAvailabilityParams) ([]Roo
 		return nil, err
 	}
 
+	jstDate := time.Date(params.Date.Year(), params.Date.Month(), params.Date.Day(), 0, 0, 0, 0, jst())
+
 	q := u.Query()
 	q.Set("campus", string(params.Campus))
-	q.Set("ymd", params.Date.Format("2006/01/02 15:04:05"))
+	q.Set("ymd", jstDate.Format("2006/01/02 15:04:05"))
 	u.RawQuery = q.Encode()
 
 	req, err := http.NewRequest(http.MethodGet, u.String(), nil)
@@ -32,7 +34,7 @@ func (rsv *TCMRSV) GetRoomAvailability(params *GetRoomAvailabilityParams) ([]Roo
 		return nil, err
 	}
 
-	res, err := rsv.DoRequest(req)
+	res, err := rsv.DoRequest(req, true)
 	if err != nil {
 		return nil, err
 	}

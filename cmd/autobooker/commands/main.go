@@ -2,6 +2,7 @@ package commands
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/ekkx/tcmrsv"
 )
@@ -14,7 +15,7 @@ func Run() error {
 
 	rsv := tcmrsv.New()
 
-	_, err = rsv.Login(&tcmrsv.LoginParams{
+	err = rsv.Login(&tcmrsv.LoginParams{
 		UserID:   cfg.UserID,
 		Password: cfg.UserPassword,
 	})
@@ -22,46 +23,39 @@ func Run() error {
 		return err
 	}
 
-	// rooms, err := rsv.GetRoomAvailability(&tcmrsv.GetRoomAvailabilityParams{
-	// 	Campus: tcmrsv.CampusIkebukuro,
-	// 	Date:   time.Now().AddDate(0, 0, 1).Local(),
+	// err = rsv.CancelReservation(&tcmrsv.CancelReservationParams{
+	// 	ReservationID: "8de87515-b625-f011-8c4e-000d3a51476f",
+	// 	Comment:       "a",
 	// })
 	// if err != nil {
 	// 	return err
 	// }
 
-	// for _, room := range rooms {
-	// 	fmt.Println("--------")
-	// 	fmt.Println(room.Name)
-	// 	fmt.Println(room.Type == tcmrsv.RoomTypeGrand)
-	// }
-
-	// if _, err := rsv.Reserve(&tcmrsv.ReserveParams{
+	// err = rsv.Reserve(&tcmrsv.ReserveParams{
 	// 	Campus:     tcmrsv.CampusIkebukuro,
-	// 	RoomID:     "e9f2e624-2f48-ec11-8c60-002248696fd6",
-	// 	Date:       time.Date(2025, 4, 29, 0, 0, 0, 0, time.Local),
+	// 	RoomID:     "b9f2e624-2f48-ec11-8c60-002248696fd6",
+	// 	Date:       time.Now().AddDate(0, 0, 1),
 	// 	FromHour:   20,
-	// 	FromMinute: 0,
+	// 	FromMinute: 00,
 	// 	ToHour:     22,
 	// 	ToMinute:   30,
-	// }); err != nil {
-	// 	panic(err)
-	// }
-
-	// var ikbkrRsvs []tcmrsv.Reservation
-	// for _, r := range rsvs {
-	// 	if r.Campus == tcmrsv.CampusIkebukuro {
-	// 		ikbkrRsvs = append(ikbkrRsvs, r)
-	// 	}
-	// }
-
-	// _, err = rsv.CancelReservation(&tcmrsv.CancelReservationParams{
-	// 	ReservationID: ikbkrRsvs[0].ID,
-	// 	Comment:       "間違えました。",
 	// })
 	// if err != nil {
 	// 	return err
 	// }
+
+	rooms, err := rsv.GetRoomAvailability(&tcmrsv.GetRoomAvailabilityParams{
+		Campus: tcmrsv.CampusIkebukuro,
+		Date:   time.Now().AddDate(0, 0, 1),
+	})
+	if err != nil {
+		return err
+	}
+
+	for _, room := range rooms {
+		fmt.Println("--------")
+		fmt.Println(room)
+	}
 
 	rsvs, err := rsv.GetMyReservations()
 	if err != nil {

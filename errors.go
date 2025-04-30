@@ -10,10 +10,13 @@ import (
 )
 
 var (
-	ErrInternalServer = errors.New("internal server error")
+	ErrAuthenticationFailed    = errors.New("authentication failed error")
+	ErrCreateReservationFailed = errors.New("create reservation failed error")
+	ErrCancelReservationFailed = errors.New("cancel reservation failed error")
+	ErrInternalServer          = errors.New("internal server error")
 )
 
-func isErrorPage(body io.Reader) (bool, error) {
+func isInternalServerErrorPage(body io.Reader) (bool, error) {
 	z := html.NewTokenizer(body)
 
 	for {
@@ -37,6 +40,31 @@ func isErrorPage(body io.Reader) (bool, error) {
 								return true, nil
 							}
 						}
+					}
+				}
+			}
+		}
+	}
+}
+
+func isLoginPage(body io.Reader) (bool, error) {
+	z := html.NewTokenizer(body)
+
+	for {
+		tt := z.Next()
+		switch tt {
+		case html.ErrorToken:
+			if z.Err() == io.EOF {
+				return false, nil
+			}
+			return false, z.Err()
+
+		case html.SelfClosingTagToken, html.StartTagToken:
+			t := z.Token()
+			if t.Data == "input" {
+				for _, attr := range t.Attr {
+					if attr.Key == "id" && attr.Val == "btnLogin" {
+						return true, nil
 					}
 				}
 			}
