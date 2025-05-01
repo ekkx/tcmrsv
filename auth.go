@@ -11,13 +11,13 @@ type LoginParams struct {
 	Password string
 }
 
-func (rsv *TCMRSV) Login(params *LoginParams) error {
-	req, err := http.NewRequest(http.MethodGet, ENDPOINT_LOGIN, nil)
+func (c *Client) Login(params *LoginParams) error {
+	req, err := http.NewRequest(http.MethodGet, c.baseURL+ENDPOINT_LOGIN, nil)
 	if err != nil {
 		return err
 	}
 
-	res, err := rsv.DoRequest(req, false)
+	res, err := c.DoRequest(req, false)
 	if err != nil {
 		return err
 	}
@@ -26,20 +26,20 @@ func (rsv *TCMRSV) Login(params *LoginParams) error {
 	form := url.Values{}
 	form.Set("__EVENTTARGET", "")
 	form.Set("__EVENTARGUMENT", "")
-	form.Set("__VIEWSTATE", rsv.aspcfg.ViewState)
-	form.Set("__VIEWSTATEGENERATOR", rsv.aspcfg.ViewStateGenerator)
-	form.Set("__EVENTVALIDATION", rsv.aspcfg.EventValidation)
+	form.Set("__VIEWSTATE", c.aspConfig.ViewState)
+	form.Set("__VIEWSTATEGENERATOR", c.aspConfig.ViewStateGenerator)
+	form.Set("__EVENTVALIDATION", c.aspConfig.EventValidation)
 	form.Set("input_id", params.UserID)
 	form.Set("input_pass", params.Password)
 	form.Set("btnLogin", "")
 
-	req, err = http.NewRequest(http.MethodPost, ENDPOINT_LOGIN, strings.NewReader(form.Encode()))
+	req, err = http.NewRequest(http.MethodPost, c.baseURL+ENDPOINT_LOGIN, strings.NewReader(form.Encode()))
 	if err != nil {
 		return err
 	}
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 
-	res, err = rsv.DoRequest(req, true)
+	res, err = c.DoRequest(req, true)
 	if err != nil {
 		return err
 	}

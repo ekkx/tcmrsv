@@ -4,7 +4,6 @@ import (
 	"io"
 	"net/http"
 	"net/url"
-	"strconv"
 	"strings"
 	"time"
 
@@ -16,8 +15,16 @@ type GetRoomAvailabilityParams struct {
 	Date   time.Time
 }
 
-func (rsv *TCMRSV) GetRoomAvailability(params *GetRoomAvailabilityParams) ([]Room, error) {
-	u, err := url.Parse(ENDPOINT_RESERVE)
+// 利用可能な練習室一覧を取得する
+func (c *Client) GetRoomAvailability(params *GetRoomAvailabilityParams) ([]RoomAvailability, error) {
+	if !params.Campus.IsValid() {
+		return nil, ErrInvalidCampus
+	}
+	if IsDateWithin2Days(params.Date) {
+		return nil, ErrInvalidTimeRange
+	}
+
+	u, err := url.Parse(c.baseURL+ENDPOINT_RESERVE)
 	if err != nil {
 		return nil, err
 	}
@@ -34,7 +41,7 @@ func (rsv *TCMRSV) GetRoomAvailability(params *GetRoomAvailabilityParams) ([]Roo
 		return nil, err
 	}
 
-	res, err := rsv.DoRequest(req, true)
+	res, err := c.DoRequest(req, true)
 	if err != nil {
 		return nil, err
 	}
@@ -42,18 +49,25 @@ func (rsv *TCMRSV) GetRoomAvailability(params *GetRoomAvailabilityParams) ([]Roo
 
 	z := html.NewTokenizer(res.Body)
 
-	var rooms []Room
-	var insideTable bool
-	var insideRow bool
+	var availabilities []RoomAvailability
+	var insideTable, insideRow bool
 	var colIndex int
-	var currentRoom *Room
+	var currentRoomName string
+	var currentAvailability *RoomAvailability
+
+	const baseHour = 7
+
+	now := time.Now().In(jst())
+	isToday := params.Date.Year() == now.Year() &&
+		params.Date.Month() == now.Month() &&
+		params.Date.Day() == now.Day()
 
 	for {
 		tt := z.Next()
 		switch tt {
 		case html.ErrorToken:
 			if z.Err() == io.EOF {
-				return rooms, nil
+				return availabilities, nil
 			}
 			return nil, z.Err()
 
@@ -72,83 +86,61 @@ func (rsv *TCMRSV) GetRoomAvailability(params *GetRoomAvailabilityParams) ([]Roo
 				if insideTable {
 					colIndex = 0
 					insideRow = true
+					currentRoomName = ""
+					currentAvailability = nil
 				}
 
 			case "td":
-				if insideRow {
-					colIndex++
-					attrs := make(map[string]string)
-					for _, a := range t.Attr {
-						attrs[a.Key] = a.Val
-					}
+				if !insideRow {
+					break
+				}
+				colIndex++
+				attrs := map[string]string{}
+				for _, a := range t.Attr {
+					attrs[a.Key] = a.Val
+				}
 
-					// 部屋
-					if colIndex == 1 {
-						class := attrs["class"]
-						if class == "g" || class == "a" {
-							currentRoom = &Room{
-								Type: RoomType(class),
+				// 部屋
+				if colIndex == 1 {
+					continue
+				}
+
+				// 空き時間
+				if colIndex >= 2 && currentAvailability != nil {
+					class := attrs["class"]
+					style := attrs["style"]
+					isAvailable := strings.HasPrefix(class, "judgment4") || style == "text-align:center;"
+					disabled := false
+
+					if isAvailable && !disabled {
+						offset := colIndex - 2
+						hour := baseHour + (offset*30)/60
+						minute := (offset * 30) % 60
+
+						if isToday {
+							slotTime := time.Date(params.Date.Year(), params.Date.Month(), params.Date.Day(), hour, minute, 0, 0, jst())
+							if slotTime.Before(now) {
+								break
 							}
 						}
-					}
 
-					// 空き状況
-					if colIndex >= 2 && currentRoom != nil {
-						class := attrs["class"]
-						if strings.HasPrefix(class, "judgment") || attrs["style"] == "text-align:center;" {
-							var roomID string
-							var hour int
-							var minute int
-							hasInput := false
-
-							for {
-								tt2 := z.Next()
-								if tt2 == html.StartTagToken || tt2 == html.SelfClosingTagToken {
-									t2 := z.Token()
-									if t2.Data == "input" {
-										inputAttrs := make(map[string]string)
-										for _, a := range t2.Attr {
-											inputAttrs[a.Key] = a.Val
-										}
-										id, ok := inputAttrs["id"]
-										if ok {
-											parts := strings.Split(id, ",")
-											if len(parts) == 2 {
-												roomID = parts[0]
-												timeStr := parts[1]
-												if len(timeStr) == 4 {
-													hour, _ = strconv.Atoi(timeStr[:2])
-													minute, _ = strconv.Atoi(timeStr[2:])
-												}
-												hasInput = true
-											}
-										}
-										break
-									}
-								} else if tt2 == html.EndTagToken && z.Token().Data == "td" {
-									break
-								}
-							}
-
-							if hasInput {
-								if currentRoom.ID == "" {
-									currentRoom.ID = roomID
-								}
-								currentRoom.Slots = append(currentRoom.Slots, TimeSlot{
-									Hour:       hour,
-									Minute:     minute,
-									Reservable: class == "judgment4",
-								})
-							}
-						}
+						currentAvailability.AvailableTimes = append(currentAvailability.AvailableTimes, AvailableTime{
+							Hour:   hour,
+							Minute: minute,
+						})
 					}
 				}
 
 			case "span":
-				if insideRow && colIndex == 1 && currentRoom != nil {
-					tt2 := z.Next()
-					if tt2 == html.TextToken {
-						currentRoom.Name = strings.TrimSpace(z.Token().Data)
+				if insideRow && colIndex == 1 {
+					if z.Next() == html.TextToken {
+						currentRoomName = strings.TrimSpace(z.Token().Data)
+						for _, r := range GetRooms() {
+							if r.Name == currentRoomName {
+								currentAvailability = &RoomAvailability{Room: r}
+								break
+							}
+						}
 					}
 				}
 			}
@@ -158,9 +150,8 @@ func (rsv *TCMRSV) GetRoomAvailability(params *GetRoomAvailabilityParams) ([]Roo
 			switch t.Data {
 			case "tr":
 				if insideRow {
-					if currentRoom != nil && currentRoom.Name != "" {
-						rooms = append(rooms, *currentRoom)
-						currentRoom = nil
+					if currentAvailability != nil && len(currentAvailability.AvailableTimes) > 0 {
+						availabilities = append(availabilities, *currentAvailability)
 					}
 					insideRow = false
 				}

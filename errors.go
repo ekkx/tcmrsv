@@ -13,6 +13,12 @@ var (
 	ErrAuthenticationFailed    = errors.New("authentication failed error")
 	ErrCreateReservationFailed = errors.New("create reservation failed error")
 	ErrCancelReservationFailed = errors.New("cancel reservation failed error")
+	ErrInvalidCampus           = errors.New("invalid campus error")
+	ErrInvalidIDFormat         = errors.New("invalid ID format error")
+	ErrDateOutOfRange          = errors.New("date out of range error")
+	ErrInvalidTimeRange        = errors.New("invalid time range error")
+	ErrTimeInPast              = errors.New("time in past error")
+	ErrInvalidComment          = errors.New("invalid comment error")
 	ErrInternalServer          = errors.New("internal server error")
 )
 

@@ -17,7 +17,7 @@ func main() {
   rsv := tcmrsv.New()
 
   if err := rsv.Login(&tcmrsv.LoginParams{
-    ID:       "-----",
+    UserID:   "-----",
     Password: "-----",
   }); err != nil {
     panic(err)
@@ -45,6 +45,6 @@ func main() {
 - [x] 自分の予約一覧取得
 - [x] 利用可能な練習室の取得
 - [x] 操作が正常に終了したか判定
-- [ ] 練習室一覧を固定化（ID, ピアノの種類）
-- [ ] 練習室とキャンパスを紐付け
+- [x] 練習室一覧を固定化（ID, ピアノの種類）
+- [x] 練習室とキャンパスを紐付け
 - [ ] できる範囲で入力値のバリデーション

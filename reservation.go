@@ -11,13 +11,13 @@ import (
 	"golang.org/x/net/html"
 )
 
-func (rsv *TCMRSV) GetMyReservations() ([]Reservation, error) {
-	req, err := http.NewRequest(http.MethodGet, ENDPOINT_INDEX, nil)
+func (c *Client) GetMyReservations() ([]Reservation, error) {
+	req, err := http.NewRequest(http.MethodGet, c.baseURL+ENDPOINT_INDEX, nil)
 	if err != nil {
 		return nil, err
 	}
 
-	res, err := rsv.DoRequest(req, true)
+	res, err := c.DoRequest(req, true)
 	if err != nil {
 		return nil, err
 	}
@@ -140,8 +140,24 @@ type ReserveParams struct {
 	ToMinute   int
 }
 
-func (rsv *TCMRSV) Reserve(params *ReserveParams) error {
-	u, err := url.Parse(ENDPOINT_CONFIRMS)
+func (c *Client) Reserve(params *ReserveParams) error {
+	if !params.Campus.IsValid() {
+		return ErrInvalidCampus
+	}
+	if !IsIDValid(params.RoomID) {
+		return ErrInvalidIDFormat
+	}
+	if !IsDateWithin2Days(params.Date) {
+		return ErrDateOutOfRange
+	}
+	if !IsTimeRangeValid(params.FromHour, params.FromMinute, params.ToHour, params.ToMinute) {
+		return ErrInvalidTimeRange
+	}
+	if !IsTimeInFuture(params.FromHour, params.FromMinute) {
+		return ErrTimeInPast
+	}
+
+	u, err := url.Parse(c.baseURL + ENDPOINT_CONFIRMS)
 	if err != nil {
 		return err
 	}
@@ -153,9 +169,9 @@ func (rsv *TCMRSV) Reserve(params *ReserveParams) error {
 	q.Set("room", params.RoomID)
 	q.Set("ymd", jstDate.Format("2006/01/02 15:04:05"))
 	q.Set("fromh", fmt.Sprintf("%02d", params.FromHour))
-	q.Set("fromm", fmt.Sprintf("%02d", params.FromMinute)) // TODO: 00 か 30 バリデートする
+	q.Set("fromm", fmt.Sprintf("%02d", params.FromMinute))
 	q.Set("toh", fmt.Sprintf("%02d", params.ToHour))
-	q.Set("tom", fmt.Sprintf("%02d", params.ToMinute)) // TODO: 00 か 30 バリデートする
+	q.Set("tom", fmt.Sprintf("%02d", params.ToMinute))
 	u.RawQuery = q.Encode()
 
 	req, err := http.NewRequest(http.MethodGet, u.String(), nil)
@@ -163,16 +179,16 @@ func (rsv *TCMRSV) Reserve(params *ReserveParams) error {
 		return err
 	}
 
-	res, err := rsv.DoRequest(req, true)
+	res, err := c.DoRequest(req, true)
 	if err != nil {
 		return err
 	}
 	defer res.Body.Close()
 
 	form := url.Values{}
-	form.Set("__VIEWSTATE", rsv.aspcfg.ViewState)
-	form.Set("__VIEWSTATEGENERATOR", rsv.aspcfg.ViewStateGenerator)
-	form.Set("__EVENTVALIDATION", rsv.aspcfg.EventValidation)
+	form.Set("__VIEWSTATE", c.aspConfig.ViewState)
+	form.Set("__VIEWSTATEGENERATOR", c.aspConfig.ViewStateGenerator)
+	form.Set("__EVENTVALIDATION", c.aspConfig.EventValidation)
 	form.Set("KakuteiButton", "")
 
 	req, err = http.NewRequest(http.MethodPost, u.String(), strings.NewReader(form.Encode()))
@@ -181,7 +197,7 @@ func (rsv *TCMRSV) Reserve(params *ReserveParams) error {
 	}
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 
-	res, err = rsv.DoRequest(req, true)
+	res, err = c.DoRequest(req, true)
 	if err != nil {
 		return err
 	}
@@ -203,8 +219,15 @@ type CancelReservationParams struct {
 	Comment       string
 }
 
-func (rsv *TCMRSV) CancelReservation(params *CancelReservationParams) error {
-	u, err := url.Parse(ENDPOINT_CANCEL_RESERVATION)
+func (c *Client) CancelReservation(params *CancelReservationParams) error {
+	if !IsIDValid(params.ReservationID) {
+		return ErrInvalidIDFormat
+	}
+	if !IsCommentValid(params.Comment) {
+		return ErrInvalidComment
+	}
+
+	u, err := url.Parse(c.baseURL + ENDPOINT_CANCEL_RESERVATION)
 	if err != nil {
 		return err
 	}
@@ -218,7 +241,7 @@ func (rsv *TCMRSV) CancelReservation(params *CancelReservationParams) error {
 		return err
 	}
 
-	res, err := rsv.DoRequest(req, true)
+	res, err := c.DoRequest(req, true)
 	if err != nil {
 		return err
 	}
@@ -227,9 +250,9 @@ func (rsv *TCMRSV) CancelReservation(params *CancelReservationParams) error {
 	form := url.Values{}
 	form.Set("__EVENTTARGET", "")
 	form.Set("__EVENTARGUMENT", "")
-	form.Set("__VIEWSTATE", rsv.aspcfg.ViewState)
-	form.Set("__VIEWSTATEGENERATOR", rsv.aspcfg.ViewStateGenerator)
-	form.Set("__EVENTVALIDATION", rsv.aspcfg.EventValidation)
+	form.Set("__VIEWSTATE", c.aspConfig.ViewState)
+	form.Set("__VIEWSTATEGENERATOR", c.aspConfig.ViewStateGenerator)
+	form.Set("__EVENTVALIDATION", c.aspConfig.EventValidation)
 	form.Set("freeword", params.Comment)
 	form.Set("YoyakuCancelButton", "")
 
@@ -239,7 +262,7 @@ func (rsv *TCMRSV) CancelReservation(params *CancelReservationParams) error {
 	}
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 
-	res, err = rsv.DoRequest(req, true)
+	res, err = c.DoRequest(req, true)
 	if err != nil {
 		return err
 	}
