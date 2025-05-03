@@ -1,0 +1,756 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja" dir="ltr">
+    <head id="Head1">
+        <link rel="shortcut icon" href="../../favicon.ico"/>
+        <link type="text/css" rel="stylesheet" media="screen, projection, tv, print" href="../../css/categories.css"/>
+        <link type="text/css" rel="alternate stylesheet" href="../../css/categories_s.css" title="Small"/>
+        <link type="text/css" rel="alternate stylesheet" href="../../css/categories_l.css" title="Large"/>
+        <script type="text/javascript">
+            history.forward();
+            window.onunload = function() {}
+            ;
+        </script>
+        <script type="text/javascript" src="../../js/styleswitcher.js"></script>
+        <script type="text/javascript" src="../../js/even.js"></script>
+        <script type="text/javascript">
+            var rand = Math.random();
+            var interval = 600;
+            //処理を実行するまでの秒数
+            var NewWindow;
+            var i;
+
+            var timer = null
+
+            if (navigator.appVersion.charAt(0) * 1 >= 4) {
+                function setTimer() {
+                    timer = setTimeout("onidle()", 1000 * interval)
+                }
+                function resetTimer() {
+                    if (timer != null)
+                        clearTimeout(timer)
+                    setTimer()
+                }
+
+                var _f = new Function("e","resetTimer();document.routeEvent&&document.routeEvent(e)")
+                if (navigator.appName == "Netscape" && navigator.appVersion.charAt(0) == "4")
+                    document.captureEvents(Event.MOUSEMOVE | Event.KEYDOWN | Event.MOUSEDOWN)
+                document.onmousemove = _f
+                document.onkeydown = _f
+                document.onmousedown = _f
+                setTimer()
+            }
+            if (NewWindow != null) {
+                NewWindow.close();
+            }
+            function onidle() {
+                // 一定時間処理が無かった場合別ページを表示する
+                window.open("../../index.aspx", "_self");
+            }
+
+            function wopen(URL) {
+                NewWindow = window.open(URL, 'NW', 'width=820,height=500,scrollbars=yes,left=100,top=120');
+                //NewWindow.focus()
+            }
+        </script>
+        <script type="text/javascript" src="../../js/eventaspect.js"></script>
+        <title>トップページ ｜ 東京音楽大学
+</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta http-equiv="Content-Style-Type" content="text/css"/>
+        <meta http-equiv="Content-Style-Type" content="text/javascript"/>
+        <meta http-equiv="Imagetoolbar" content="no"/>
+        <meta name="copyright" content="(C) 東京音楽大学"/>
+        <meta name="description" content="東京音楽大学の練習室予約の専用サイトです。中目黒・代官山キャンパス、池袋キャンパスの練習室の予約が可能です。"/>
+        <meta name="keywords" content="東京音楽大学,練習室,予約,中目黒・代官山キャンパス,池袋キャンパス"/>
+    </head>
+    <body id="categories" class="corp-page">
+        <form name="form1" method="post" action="./index.aspx" id="form1">
+            <div>
+                <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJMTUzMDY3NDY5D2QWAgIDD2QWCgIBDxYCHgRUZXh0BYwEPGRpdiBpZD0naGVhZGVyJz4KPGRpdiBpZD0nc2l0ZS10aXRsZSc+CjwvZGl2Pgo8ZGl2IGlkPSd1dGlsaXR5LW5hdic+CjxkbD4KPGR0PjwvZHQ+CjxkZCBpZD0nbmF2LXByaXZhY3knPgo8YSBocmVmPScuLi8uLi9wZXJzb25hbC9wcml2YWN5L2luZGV4LmFzcHgnPgo8aW1nIHNyYz0nLi4vLi4vaW1nL2NvbW1vbi91bmF2X3ByaXZhY3kucG5nJyB3aWR0aD0nMTA2JyBoZWlnaHQ9JzE2JyBhbHQ9J+WAi+S6uuaDheWgseS/neitt+aWuemHnScgLz48L2E+CjwvZGQ+CjxkZCBjbGFzcz0ndXNlcic+CjxzcGFuIGNsYXNzPSd1c2VyLWhlYWQnPuODreOCsOOCpOODs+ODpuODvOOCtjo8L3NwYW4+CjxzcGFuIGNsYXNzPSd1c2VyLWlkJz4KPHNwYW4gaWQ9J2FzcExvZ2luTmFtZSc+6auY6KaL44CA55yf5pm65Lq6PC9zcGFuPjwvc3Bhbj4KPC9kZD4KPGRkIGNsYXNzPSdsb2dvdXQnPgo8YSBocmVmPScuLi8uLi9sb2dvdXQuYXNweCc+CjxzcGFuPuODreOCsOOCouOCpuODiDwvc3Bhbj48L2E+CjwvZGQ+CjwvZGw+CjwvZGl2PgpkAgcPFgIfAAXgBzx1bD4KPGxpPgo8YSBocmVmPScuLi9mYWNpbGl0eS91c2FnZV9ndWlkZS5hc3B4Jz4KPGltZyBpZD0nYXNwTWVudUltYWdlMScgc3JjPScuLi8uLi9pbWcvY29tbW9uL2JuYV9ndWlkZS5wbmcnIGFsdD0n5Yip55So5qGI5YaFJyBzdHlsZT0nbWFyZ2luLWxlZnQ6IDZweDtib3JkZXItd2lkdGg6IDBweDsnIC8+CjwvYT4KPC9saT4KPGxpPgo8YSBocmVmPScuLi9mYWNpbGl0eS9wcmVjYXV0aW9ucy5hc3B4Jz4KPGltZyBpZD0nYXNwTWVudUltYWdlMicgc3JjPScuLi8uLi9pbWcvY29tbW9uL2JuYV9wcmVjYXV0aW9ucy5wbmcnIGFsdD0n5rOo5oSP5LqL6aCFJyBzdHlsZT0nbWFyZ2luLWxlZnQ6IDZweDtib3JkZXItd2lkdGg6IDBweDsnIC8+CjwvYT4KPC9saT4KPGxpPgo8YSBocmVmPScuLi9mYWNpbGl0eS9pbmRleC5hc3B4Jz4KPGltZyBpZD0nYXNwTWVudUltYWdlNicgc3JjPScuLi8uLi9pbWcvY29tbW9uL2JhbmFfcmVjYmFuYS1mYWNpbGl0eS5wbmcnIGFsdD0n57e057+S5a6k5LqI57SEJyBzdHlsZT0nbWFyZ2luLWxlZnQ6IDZweDsgYm9yZGVyLXdpZHRoOiAwcHg7JyAvPgo8L2E+CjwvbGk+CjxsaT4KPGEgaHJlZj0nLi4vZmFjaWxpdHkvLi9wZGYvMjAyNTA0MjQxMzQ5NDhfMS5wZGYnIHRhcmdldD0nX2JsYW5rJyA+CjxpbWcgaWQ9J2FzcE1lbnVJbWFnZTQnIHNyYz0nLi4vLi4vaW1nL2NvbW1vbi9iYW5hX3NjaGVkdWxlLnBuZycgYWx0PSfplovmlL7jgrnjgrHjgrjjg6Xjg7zjg6snIHN0eWxlPSdtYXJnaW4tbGVmdDogNnB4OyBib3JkZXItd2lkdGg6IDBweDsnIC8+CjwvYT4KPC9saT4KPGxpPgo8YSBocmVmPScuLi9wcm9maWxlL2VkaXQuYXNweCc+CjxpbWcgaWQ9J2FzcE1lbnVJbWFnZTUnIHNyYz0nLi4vLi4vaW1nL2NvbW1vbi9iYW5hX2FjY291bnQucG5nJyBhbHQ9J+OCouOCq+OCpuODs+ODiOioreWumicgc3R5bGU9J21hcmdpbi1sZWZ0OiA2cHg7IGJvcmRlciAtd2lkdGg6IDBweDsnIC8+CjwvYT4KPC9saT4KPC91bD4KZAIJDxYCHwAFygQ8ZGw+PGR0PjxzcGFuIGNsYXNzPSJkYXRlIj4yMDI0LzAzLzI5PC9zcGFuPjxzcGFuIGNsYXNzPSJ0aXRsZSI+44CQ5YWo5L2T44G444Gu44GK55+l44KJ44Gb44CRPC9zcGFuPjwvZHQ+PGRkPjxzcGFuIGNsYXNzPSJyZXBvcnQiPue3tOe/kuWupOS6iOe0hOOCteOCpOODiOWGheOBruOAjOOCouOCq+OCpuODs+ODiOioreWumuOAjeOBi+OCieODoeODvOODq+OCouODieODrOOCueOCkuioreWumuOBl+OBpuOBj+OBoOOBleOBhOOAguioreWumuOBmeOCi+OBk+OBqOOBp+S6iOe0hOeiuuWumuODoeODvOODq+OBjOWxiuOBjeOBvuOBmeOAgjxiciAvPuS6iOe0hOeUu+mdouOCkuOCueOCr+ODquODvOODs+OCt+ODp+ODg+ODiOOBl+OBpuOBhOOCi+aWueOBjOOBhOOBvuOBmeOBjOOAgeeogOOBq+S6iOe0hOOBjOWPluOCjOOBpuOBhOOBquOBhOOBk+OBqOOBjOOBguOCiuOBvuOBmeOAgjxiciAvPuS6iOe0hOeiuuWumuODoeODvOODq+OBjOWxiuOBj+OBk+OBqOOBp+eiuuWun+OBq+S6iOe0hOWHuuadpeOBn+iovOaYjuOBq+OBquOCiuOBvuOBmeOBruOBp+OAgeioreWumuOBl+OBpuOBj+OBoOOBleOBhOOAgjwvc3Bhbj48L2RkPjwvZGw+ZAILDw8WAh4HVmlzaWJsZWdkFgYCAQ8WAh8ABdYHPGRsPjxkdCBzdHlsZT0nd2lkdGg6MTYwcHgnPjxzcGFuPuaxoOiii+OCreODo+ODs+ODkeOCuTwvc3Bhbj48L2R0PjxkdCBjbGFzcz0icmVzLWRhdGUiPjxzcGFuPjIwMjXlubQwNeaciDA15pel77yI5pyI77yJPC9zcGFuPjwvZHQ+PGRkIGNsYXNzPSJyZXMtdGltZSI+PHNwYW4+MTc6MDAtMjI6MzA8L3NwYW4+PC9kZD48ZGQgY2xhc3M9InJlcy1yb29tIj48c3Bhbj5BNDE077yIR++8iTwvc3Bhbj48L2RkPjxkZCBjbGFzcz0icmVzLWNhbmNlbGwiPjxhIGhyZWY9ImNhbmNlbC5hc3B4P2lkPWZhNzkxMTU2LWNjMjctZjAxMS04YzRlLTAwMGQzYWNlOWMzZSI+PHNwYW4+5LqI57SE44KS44Kt44Oj44Oz44K744OrPC9zcGFuPjwvYT48L2RkPjxkZCBjbGFzcz0icmVzLWNoYW5nZSI+PGEgaHJlZj0iY2hhbmdlLmFzcHg/aWQ9ZmE3OTExNTYtY2MyNy1mMDExLThjNGUtMDAwZDNhY2U5YzNlIj48c3Bhbj7kuojntITjgpLkv67mraM8L3NwYW4+PC9hPjwvZGQ+PC9kbD48ZGw+PGR0IHN0eWxlPSd3aWR0aDoxNjBweCc+PHNwYW4+5rGg6KKL44Kt44Oj44Oz44OR44K5PC9zcGFuPjwvZHQ+PGR0IGNsYXNzPSJyZXMtZGF0ZSI+PHNwYW4+MjAyNeW5tDA15pyIMDXml6XvvIjmnIjvvIk8L3NwYW4+PC9kdD48ZGQgY2xhc3M9InJlcy10aW1lIj48c3Bhbj4xNzowMC0yMjozMDwvc3Bhbj48L2RkPjxkZCBjbGFzcz0icmVzLXJvb20iPjxzcGFuPkE0MTXvvIhH77yJPC9zcGFuPjwvZGQ+PGRkIGNsYXNzPSJyZXMtY2FuY2VsbCI+PGEgaHJlZj0iY2FuY2VsLmFzcHg/aWQ9OGFiMjYzZmQtZDEyNy1mMDExLThjNGUtMDAwZDNhY2U5YzNlIj48c3Bhbj7kuojntITjgpLjgq3jg6Pjg7Pjgrvjg6s8L3NwYW4+PC9hPjwvZGQ+PGRkIGNsYXNzPSJyZXMtY2hhbmdlIj48YSBocmVmPSJjaGFuZ2UuYXNweD9pZD04YWIyNjNmZC1kMTI3LWYwMTEtOGM0ZS0wMDBkM2FjZTljM2UiPjxzcGFuPuS6iOe0hOOCkuS/ruatozwvc3Bhbj48L2E+PC9kZD48L2RsPmQCAw8PFgIfAAVC4oC75LqI57SE44GX44Gf44GE5pel44KS44Kv44Oq44OD44Kv44GX44Gm5LqI57SE44KS5aeL44KB44G+44GZ44CCZGQCBw8PFgIfAAVC4oC75LqI57SE44GX44Gf44GE5pel44KS44Kv44Oq44OD44Kv44GX44Gm5LqI57SE44KS5aeL44KB44G+44GZ44CCZGQCDQ8WAh8ABX08ZGl2IGlkPSdmb290ZXInPgo8ZGl2IGlkPSdjb3B5cmlnaHQnPgo8c3Bhbj5DT1BZUklHSFQgKEMpIFRva3lvIENvbGxlZ2Ugb2YgTXVzaWMsIEFMTCBSSUdIVFMgUkVTRVJWRUQuPC9zcGFuPgo8L2Rpdj4KPC9kaXY+CmRkwrMkfMe3vqCof2DRgWyh2K/judxyAOCkoATfzKnR+z0="/>
+            </div>
+            <div>
+                <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="DFA9D745"/>
+            </div>
+            <div id="container">
+                <!-- ヘッダー -->
+                <div id='header'>
+                    <div id='site-title'></div>
+                    <div id='utility-nav'>
+                        <dl>
+                            <dt></dt>
+                            <dd id='nav-privacy'>
+                                <a href='../../personal/privacy/index.aspx'>
+                                    <img src='../../img/common/unav_privacy.png' width='106' height='16' alt='個人情報保護方針'/>
+                                </a>
+                            </dd>
+                            <dd class='user'>
+                                <span class='user-head'>ログインユーザ:</span>
+                                <span class='user-id'>
+                                    <span id='aspLoginName'>ユーザー名</span>
+                                </span>
+                            </dd>
+                            <dd class='logout'>
+                                <a href='../../logout.aspx'>
+                                    <span>ログアウト</span>
+                                </a>
+                            </dd>
+                        </dl>
+                    </div>
+                    <!-- /ヘッダー -->
+                    <!-- ナビゲーション -->
+                    <!-- /ナビゲーション -->
+                    <!-- ディスプレイ -->
+                    <div id="controlpannel">
+                        <div id="cp-box" class="parents">
+                            <dl>
+                                <dt>
+                                    <a href="index.aspx">
+                                        <span>トップページ</span>
+                                    </a>
+                                </dt>
+                                <dd class="present">
+                                    <span>練習室予約</span>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <style>
+                        #Image1 {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+                    </style>
+                    <!-- /ディスプレイ -->
+                    <!-- コンテンツ -->
+                    <div id="content">
+                        <div style="text-align: center">
+                            <img id="Image1" src="../../img/slide/img_top1.jpg" style="border-width:0px;"/>
+                        </div>
+                        <br/>
+                        <!-- sidemenu -->
+                        <div id="sub">
+                            <div id="recbana">
+                                <h2></h2>
+                                <ul>
+                                    <li>
+                                        <a href='../facility/usage_guide.aspx'>
+                                            <img id='aspMenuImage1' src='../../img/common/bna_guide.png' alt='利用案内' style='margin-left: 6px;border-width: 0px;'/>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href='../facility/precautions.aspx'>
+                                            <img id='aspMenuImage2' src='../../img/common/bna_precautions.png' alt='注意事項' style='margin-left: 6px;border-width: 0px;'/>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href='../facility/index.aspx'>
+                                            <img id='aspMenuImage6' src='../../img/common/bana_recbana-facility.png' alt='練習室予約' style='margin-left: 6px; border-width: 0px;'/>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href='../facility/./pdf/20250424134948_1.pdf' target='_blank'>
+                                            <img id='aspMenuImage4' src='../../img/common/bana_schedule.png' alt='開放スケジュール' style='margin-left: 6px; border-width: 0px;'/>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href='../profile/edit.aspx'>
+                                            <img id='aspMenuImage5' src='../../img/common/bana_account.png' alt='アカウント設定' style='margin-left: 6px; border -width: 0px;'/>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- /sidemenu -->
+                        <div id="main" class="even">
+                            <!-- 練習室予約 -->
+                            <div id="reservation">
+                                <h3 class="concert-detail">
+                                    <span class="cnt">お知らせ</span>
+                                </h3>
+                                <div id="hresource">
+                                    <div id="notification">
+                                        <dl>
+                                            <dt>
+                                                <span class="date">2024/03/29</span>
+                                                <span class="title">【全体へのお知らせ】</span>
+                                            </dt>
+                                            <dd>
+                                                <span class="report">
+                                                    練習室予約サイト内の「アカウント設定」からメールアドレスを設定してください。設定することで予約確定メールが届きます。<br/>
+                                                    予約画面をスクリーンショットしている方がいますが、稀に予約が取れていないことがあります。<br/>予約確定メールが届くことで確実に予約出来た証明になりますので、設定してください。
+                                                </span>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <div id="Panel1">
+                                    <h3 class="reservation-detail">
+                                        <span class="cnt">あなたの予約一覧</span>
+                                    </h3>
+                                    <div id="reservation-list">
+                                        <dl>
+                                            <dt style='width:160px'>
+                                                <span>池袋キャンパス</span>
+                                            </dt>
+                                            <dt class="res-date">
+                                                <span>2025年05月05日（月）</span>
+                                            </dt>
+                                            <dd class="res-time">
+                                                <span>17:00-22:30</span>
+                                            </dd>
+                                            <dd class="res-room">
+                                                <span>A414（G）</span>
+                                            </dd>
+                                            <dd class="res-cancell">
+                                                <a href="cancel.aspx?id=fa791156-cc27-f011-8c4e-000d3ace9c3e">
+                                                    <span>予約をキャンセル</span>
+                                                </a>
+                                            </dd>
+                                            <dd class="res-change">
+                                                <a href="change.aspx?id=fa791156-cc27-f011-8c4e-000d3ace9c3e">
+                                                    <span>予約を修正</span>
+                                                </a>
+                                            </dd>
+                                        </dl>
+                                        <dl>
+                                            <dt style='width:160px'>
+                                                <span>池袋キャンパス</span>
+                                            </dt>
+                                            <dt class="res-date">
+                                                <span>2025年05月05日（月）</span>
+                                            </dt>
+                                            <dd class="res-time">
+                                                <span>17:00-22:30</span>
+                                            </dd>
+                                            <dd class="res-room">
+                                                <span>A415（G）</span>
+                                            </dd>
+                                            <dd class="res-cancell">
+                                                <a href="cancel.aspx?id=8ab263fd-d127-f011-8c4e-000d3ace9c3e">
+                                                    <span>予約をキャンセル</span>
+                                                </a>
+                                            </dd>
+                                            <dd class="res-change">
+                                                <a href="change.aspx?id=8ab263fd-d127-f011-8c4e-000d3ace9c3e">
+                                                    <span>予約を修正</span>
+                                                </a>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                    <h3 class="situation-detail">
+                                        <span class="cnt">予約状況：中目黒・代官山キャンパス</span>
+                                    </h3>
+                                    <div id="situation">
+                                        <dl class="situation-area">
+                                            <dt class="situation-text">
+                                                <span>
+                                                    <span id="lblMsgMeDi">※予約したい日をクリックして予約を始めます。</span>
+                                                </span>
+                                            </dt>
+                                            <dd class="situation-img">
+                                                <span>
+                                                    <img src="../../img/reservation/img_situation_01.gif" alt=""/>
+                                                </span>
+                                            </dd>
+                                        </dl>
+                                        <div id="time-schedule">
+                                            <table id="tblMeDi" class="timetable" cellspacing="0" border="1" border="0" style="border-collapse:collapse;">
+                                                <tr>
+                                                    <td class="empty" colspan="2">&nbsp;</td>
+                                                    <td id="tblMeDi7" class="division" colspan="2">
+                                                        <img src="../../img/reservation/img_situation_700.gif" alt="7:00-7:30"/>
+                                                    </td>
+                                                    <td id="tblMeDi8" class="division" colspan="2">
+                                                        <img src="../../img/reservation/img_situation_800.gif" alt="8:00-8:30"/>
+                                                    </td>
+                                                    <td id="tblMeDi9" class="division" colspan="2">
+                                                        <img src="../../img/reservation/img_situation_900.gif" alt="9:00-9:30"/>
+                                                    </td>
+                                                    <td id="tblMeDi10" class="division" colspan="2">
+                                                        <img src="../../img/reservation/img_situation_1000.gif" alt="10:00-10:30"/>
+                                                    </td>
+                                                    <td id="tblMeDi11" class="division" colspan="2">
+                                                        <img src="../../img/reservation/img_situation_1100.gif" alt="11:00-11:30"/>
+                                                    </td>
+                                                    <td id="tblMeDi12" class="division" colspan="2">
+                                                        <img src="../../img/reservation/img_situation_1200.gif" alt="12:00-12:30"/>
+                                                    </td>
+                                                    <td id="tblMeDi13" class="division" colspan="2">
+                                                        <img src="../../img/reservation/img_situation_1300.gif" alt="13:00-13:30"/>
+                                                    </td>
+                                                    <td id="tblMeDi14" class="division" colspan="2">
+                                                        <img src="../../img/reservation/img_situation_1400.gif" alt="14:00-14:30"/>
+                                                    </td>
+                                                    <td id="tblMeDi15" class="division" colspan="2">
+                                                        <img src="../../img/reservation/img_situation_1500.gif" alt="15:00-15:30"/>
+                                                    </td>
+                                                    <td id="tblMeDi16" class="division" colspan="2">
+                                                        <img src="../../img/reservation/img_situation_1600.gif" alt="16:00-16:30"/>
+                                                    </td>
+                                                    <td id="tblMeDi17" class="division" colspan="2">
+                                                        <img src="../../img/reservation/img_situation_1700.gif" alt="17:00-17:30"/>
+                                                    </td>
+                                                    <td id="tblMeDi18" class="division" colspan="2">
+                                                        <img src="../../img/reservation/img_situation_1800.gif" alt="18:00-18:30"/>
+                                                    </td>
+                                                    <td id="tblMeDi19" class="division" colspan="2">
+                                                        <img src="../../img/reservation/img_situation_1900.gif" alt="19:00-19:30"/>
+                                                    </td>
+                                                    <td id="tblMeDi20" class="division" colspan="2">
+                                                        <img src="../../img/reservation/img_situation_2000.gif" alt="20:00-20:30"/>
+                                                    </td>
+                                                    <td id="tblMeDi21" class="division" colspan="2">
+                                                        <img src="../../img/reservation/img_situation_2100.gif" alt="21:00-21:30"/>
+                                                    </td>
+                                                    <td id="tblMeDi22" class="division" colspan="2">
+                                                        <img src="../../img/reservation/img_situation_2200.gif" alt="22:00-22:30"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="schedule_date" rowspan="2">
+                                                        <ul>
+                                                            <li>
+                                                                <span>2025年</span>
+                                                            </li>
+                                                            <li>
+                                                                <a href="reserve.aspx?campus=2&ymd=2025/05/04 0:00:00">
+                                                                    <span class="schedule_day">5月4日（日）</span>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                    <td class="g">
+                                                        <span>グランドピアノ</span>
+                                                    </td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="a">
+                                                        <span>アップライト</span>
+                                                    </td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="schedule_date" rowspan="2">
+                                                        <ul>
+                                                            <li>
+                                                                <span>2025年</span>
+                                                            </li>
+                                                            <li>
+                                                                <a href="reserve.aspx?campus=2&ymd=2025/05/05 0:00:00">
+                                                                    <span class="schedule_day">5月5日（月）</span>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                    <td class="g">
+                                                        <span>グランドピアノ</span>
+                                                    </td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="a">
+                                                        <span>アップライト</span>
+                                                    </td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment4"></td>
+                                                </tr>
+                                            </table>
+                                            <!-- style="display: none" -->
+                                            <p>
+                                                練習室の見取図はこちら→<a href="pdf/中目黒代官山キャンパス見取り図202212.pdf" target="_blank">《見取り図》</a>
+                                                <!-- 練習室の見取図はこちら→<a href="pdf/東京音楽大学中目黒キャンパス見取り図.pdf" target="_blank">《見取り図》</a>-->
+                                            </p>
+                                        </div>
+                                        <br>
+                                        <br>
+                                    </div>
+                                    <h3 class="situation-detail">
+                                        <span class="cnt">予約状況：池袋キャンパス</span>
+                                    </h3>
+                                    <div id="situation">
+                                        <dl class="situation-area">
+                                            <dt class="situation-text">
+                                                <span>
+                                                    <span id="lblMsgIke">※予約したい日をクリックして予約を始めます。</span>
+                                                </span>
+                                            </dt>
+                                            <dd class="situation-img">
+                                                <span>
+                                                    <img src="../../img/reservation/img_situation_01.gif" alt=""/>
+                                                </span>
+                                            </dd>
+                                        </dl>
+                                        <div id="time-schedule">
+                                            <table id="tblIke" class="timetable" cellspacing="0" border="1" border="0" style="border-collapse:collapse;">
+                                                <tr>
+                                                    <td class="empty" colspan="2">&nbsp;</td>
+                                                    <td id="tblIke7" class="division" colspan="2">
+                                                        <img src="../../img/reservation/img_situation_700.gif" alt="7:00-7:30"/>
+                                                    </td>
+                                                    <td id="tblIke8" class="division" colspan="2">
+                                                        <img src="../../img/reservation/img_situation_800.gif" alt="8:00-8:30"/>
+                                                    </td>
+                                                    <td id="tblIke9" class="division" colspan="2">
+                                                        <img src="../../img/reservation/img_situation_900.gif" alt="9:00-9:30"/>
+                                                    </td>
+                                                    <td id="tblIke10" class="division" colspan="2">
+                                                        <img src="../../img/reservation/img_situation_1000.gif" alt="10:00-10:30"/>
+                                                    </td>
+                                                    <td id="tblIke11" class="division" colspan="2">
+                                                        <img src="../../img/reservation/img_situation_1100.gif" alt="11:00-11:30"/>
+                                                    </td>
+                                                    <td id="tblIke12" class="division" colspan="2">
+                                                        <img src="../../img/reservation/img_situation_1200.gif" alt="12:00-12:30"/>
+                                                    </td>
+                                                    <td id="tblIke13" class="division" colspan="2">
+                                                        <img src="../../img/reservation/img_situation_1300.gif" alt="13:00-13:30"/>
+                                                    </td>
+                                                    <td id="tblIke14" class="division" colspan="2">
+                                                        <img src="../../img/reservation/img_situation_1400.gif" alt="14:00-14:30"/>
+                                                    </td>
+                                                    <td id="tblIke15" class="division" colspan="2">
+                                                        <img src="../../img/reservation/img_situation_1500.gif" alt="15:00-15:30"/>
+                                                    </td>
+                                                    <td id="tblIke16" class="division" colspan="2">
+                                                        <img src="../../img/reservation/img_situation_1600.gif" alt="16:00-16:30"/>
+                                                    </td>
+                                                    <td id="tblIke17" class="division" colspan="2">
+                                                        <img src="../../img/reservation/img_situation_1700.gif" alt="17:00-17:30"/>
+                                                    </td>
+                                                    <td id="tblIke18" class="division" colspan="2">
+                                                        <img src="../../img/reservation/img_situation_1800.gif" alt="18:00-18:30"/>
+                                                    </td>
+                                                    <td id="tblIke19" class="division" colspan="2">
+                                                        <img src="../../img/reservation/img_situation_1900.gif" alt="19:00-19:30"/>
+                                                    </td>
+                                                    <td id="tblIke20" class="division" colspan="2">
+                                                        <img src="../../img/reservation/img_situation_2000.gif" alt="20:00-20:30"/>
+                                                    </td>
+                                                    <td id="tblIke21" class="division" colspan="2">
+                                                        <img src="../../img/reservation/img_situation_2100.gif" alt="21:00-21:30"/>
+                                                    </td>
+                                                    <td id="tblIke22" class="division" colspan="2">
+                                                        <img src="../../img/reservation/img_situation_2200.gif" alt="22:00-22:30"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="schedule_date" rowspan="2">
+                                                        <ul>
+                                                            <li>
+                                                                <span>2025年</span>
+                                                            </li>
+                                                            <li>
+                                                                <a href="reserve.aspx?campus=1&ymd=2025/05/04 0:00:00">
+                                                                    <span class="schedule_day">5月4日（日）</span>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                    <td class="g">
+                                                        <span>グランドピアノ</span>
+                                                    </td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment4"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="a">
+                                                        <span>アップライト</span>
+                                                    </td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment4"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="schedule_date" rowspan="2">
+                                                        <ul>
+                                                            <li>
+                                                                <span>2025年</span>
+                                                            </li>
+                                                            <li>
+                                                                <a href="reserve.aspx?campus=1&ymd=2025/05/05 0:00:00">
+                                                                    <span class="schedule_day">5月5日（月）</span>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                    <td class="g">
+                                                        <span>グランドピアノ</span>
+                                                    </td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment3"></td>
+                                                    <td class="judgment3"></td>
+                                                    <td class="judgment3"></td>
+                                                    <td class="judgment3"></td>
+                                                    <td class="judgment3"></td>
+                                                    <td class="judgment3"></td>
+                                                    <td class="judgment3"></td>
+                                                    <td class="judgment3"></td>
+                                                    <td class="judgment3"></td>
+                                                    <td class="judgment3"></td>
+                                                    <td class="judgment3"></td>
+                                                    <td class="judgment4"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="a">
+                                                        <span>アップライト</span>
+                                                    </td>
+                                                    <td class="judgment4"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment1"></td>
+                                                    <td class="judgment4"></td>
+                                                </tr>
+                                            </table>
+                                            <!-- style="display: none" -->
+                                            <p>
+                                                練習室の見取図はこちら→<a href="pdf/池袋キャンパス見取り図202212.pdf" target="_blank">《見取り図》</a>
+                                                <!-- 練習室の見取図はこちら→<a href="pdf/東京音楽大学池袋キャンパス見取り図.pdf" target="_blank">《見取り図》</a> -->
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /練習室予約 -->
+                        </div>
+                    </div>
+                    <!-- /コンテンツ -->
+                    <!-- フッター -->
+                    <div id='footer'>
+                        <div id='copyright'>
+                            <span>COPYRIGHT (C) Tokyo College of Music, ALL RIGHTS RESERVED.</span>
+                        </div>
+                    </div>
+                    <!-- /フッター -->
+        </form>
+    </body>
+</html>

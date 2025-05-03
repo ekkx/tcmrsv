@@ -1,0 +1,2623 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja" dir="ltr">
+    <head>
+        <link rel="shortcut icon" href="../../favicon.ico"/>
+        <link type="text/css" rel="stylesheet" media="screen, projection, tv, print" href="../../css/categories.css"/>
+        <link type="text/css" rel="alternate stylesheet" href="../../css/categories_s.css" title="Small"/>
+        <link type="text/css" rel="alternate stylesheet" href="../../css/categories_l.css" title="Large"/>
+        <script type="text/javascript" src="../../js/styleswitcher.js"></script>
+        <script type="text/javascript" src="../../js/even.js"></script>
+        <script type="text/javascript">
+            history.forward();
+        </script>
+        <script type="text/javascript">
+            var rand = Math.random();
+            var interval = 600;
+            //処理を実行するまでの秒数
+            var NewWindow;
+            var i;
+
+            var timer = null
+
+            if (navigator.appVersion.charAt(0) * 1 >= 4) {
+                function setTimer() {
+                    timer = setTimeout("onidle()", 1000 * interval)
+                }
+                function resetTimer() {
+                    if (timer != null)
+                        clearTimeout(timer)
+                    setTimer()
+                }
+
+                var _f = new Function("e","resetTimer();document.routeEvent&&document.routeEvent(e)")
+                if (navigator.appName == "Netscape" && navigator.appVersion.charAt(0) == "4")
+                    document.captureEvents(Event.MOUSEMOVE | Event.KEYDOWN | Event.MOUSEDOWN)
+                document.onmousemove = _f
+                document.onkeydown = _f
+                document.onmousedown = _f
+                setTimer()
+            }
+            if (NewWindow != null) {
+                NewWindow.close();
+            }
+            function onidle() {
+                // 一定時間処理が無かった場合別ページを表示する
+                window.open("../../index.aspx", "_self");
+            }
+
+            function wopen(URL) {
+                NewWindow = window.open(URL, 'NW', 'width=820,height=500,scrollbars=yes,left=100,top=120');
+                //NewWindow.focus()
+            }
+        </script>
+        <script type="text/javascript" src="../../js/eventaspect.js"></script>
+        <title>練習室予約 ｜ 東京音楽大学
+</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta http-equiv="Content-Style-Type" content="text/css"/>
+        <meta http-equiv="Content-Style-Type" content="text/javascript"/>
+        <meta http-equiv="Imagetoolbar" content="no"/>
+        <meta name="copyright" content="(C) 東京音楽大学"/>
+        <meta name="description" content="東京音楽大学の練習室予約の専用サイトです。中目黒・代官山キャンパス、池袋キャンパスの練習室の予約が可能です。"/>
+        <meta name="keywords" content="東京音楽大学,練習室,予約,中目黒・代官山キャンパス,池袋キャンパス"/>
+    </head>
+    <body id="categories" class="corp-page">
+        <form name="form1" method="post" action="./reserve.aspx?campus=1&amp;ymd=2025%2f05%2f05+0%3a00%3a00" id="form1">
+            <div>
+                <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUINTQ5NTM4MjkPZBYCAgMPZBYmAgEPFgIeBFRleHQFjAQ8ZGl2IGlkPSdoZWFkZXInPgo8ZGl2IGlkPSdzaXRlLXRpdGxlJz4KPC9kaXY+CjxkaXYgaWQ9J3V0aWxpdHktbmF2Jz4KPGRsPgo8ZHQ+PC9kdD4KPGRkIGlkPSduYXYtcHJpdmFjeSc+CjxhIGhyZWY9Jy4uLy4uL3BlcnNvbmFsL3ByaXZhY3kvaW5kZXguYXNweCc+CjxpbWcgc3JjPScuLi8uLi9pbWcvY29tbW9uL3VuYXZfcHJpdmFjeS5wbmcnIHdpZHRoPScxMDYnIGhlaWdodD0nMTYnIGFsdD0n5YCL5Lq65oOF5aCx5L+d6K235pa56YedJyAvPjwvYT4KPC9kZD4KPGRkIGNsYXNzPSd1c2VyJz4KPHNwYW4gY2xhc3M9J3VzZXItaGVhZCc+44Ot44Kw44Kk44Oz44Om44O844K2Ojwvc3Bhbj4KPHNwYW4gY2xhc3M9J3VzZXItaWQnPgo8c3BhbiBpZD0nYXNwTG9naW5OYW1lJz7pq5jopovjgIDnnJ/mmbrkuro8L3NwYW4+PC9zcGFuPgo8L2RkPgo8ZGQgY2xhc3M9J2xvZ291dCc+CjxhIGhyZWY9Jy4uLy4uL2xvZ291dC5hc3B4Jz4KPHNwYW4+44Ot44Kw44Ki44Km44OIPC9zcGFuPjwvYT4KPC9kZD4KPC9kbD4KPC9kaXY+CmQCBw8WAh8ABeAHPHVsPgo8bGk+CjxhIGhyZWY9Jy4uL2ZhY2lsaXR5L3VzYWdlX2d1aWRlLmFzcHgnPgo8aW1nIGlkPSdhc3BNZW51SW1hZ2UxJyBzcmM9Jy4uLy4uL2ltZy9jb21tb24vYm5hX2d1aWRlLnBuZycgYWx0PSfliKnnlKjmoYjlhoUnIHN0eWxlPSdtYXJnaW4tbGVmdDogNnB4O2JvcmRlci13aWR0aDogMHB4OycgLz4KPC9hPgo8L2xpPgo8bGk+CjxhIGhyZWY9Jy4uL2ZhY2lsaXR5L3ByZWNhdXRpb25zLmFzcHgnPgo8aW1nIGlkPSdhc3BNZW51SW1hZ2UyJyBzcmM9Jy4uLy4uL2ltZy9jb21tb24vYm5hX3ByZWNhdXRpb25zLnBuZycgYWx0PSfms6jmhI/kuovpoIUnIHN0eWxlPSdtYXJnaW4tbGVmdDogNnB4O2JvcmRlci13aWR0aDogMHB4OycgLz4KPC9hPgo8L2xpPgo8bGk+CjxhIGhyZWY9Jy4uL2ZhY2lsaXR5L2luZGV4LmFzcHgnPgo8aW1nIGlkPSdhc3BNZW51SW1hZ2U2JyBzcmM9Jy4uLy4uL2ltZy9jb21tb24vYmFuYV9yZWNiYW5hLWZhY2lsaXR5LnBuZycgYWx0PSfnt7Tnv5LlrqTkuojntIQnIHN0eWxlPSdtYXJnaW4tbGVmdDogNnB4OyBib3JkZXItd2lkdGg6IDBweDsnIC8+CjwvYT4KPC9saT4KPGxpPgo8YSBocmVmPScuLi9mYWNpbGl0eS8uL3BkZi8yMDI1MDQyNDEzNDk0OF8xLnBkZicgdGFyZ2V0PSdfYmxhbmsnID4KPGltZyBpZD0nYXNwTWVudUltYWdlNCcgc3JjPScuLi8uLi9pbWcvY29tbW9uL2JhbmFfc2NoZWR1bGUucG5nJyBhbHQ9J+mWi+aUvuOCueOCseOCuOODpeODvOODqycgc3R5bGU9J21hcmdpbi1sZWZ0OiA2cHg7IGJvcmRlci13aWR0aDogMHB4OycgLz4KPC9hPgo8L2xpPgo8bGk+CjxhIGhyZWY9Jy4uL3Byb2ZpbGUvZWRpdC5hc3B4Jz4KPGltZyBpZD0nYXNwTWVudUltYWdlNScgc3JjPScuLi8uLi9pbWcvY29tbW9uL2JhbmFfYWNjb3VudC5wbmcnIGFsdD0n44Ki44Kr44Km44Oz44OI6Kit5a6aJyBzdHlsZT0nbWFyZ2luLWxlZnQ6IDZweDsgYm9yZGVyIC13aWR0aDogMHB4OycgLz4KPC9hPgo8L2xpPgo8L3VsPgpkAgkPFgIfAAUY5rGg6KKL44Kt44Oj44Oz44OR44K577yaZAILDxYCHwAFBDIwMjVkAg0PFgIfAAUBNWQCDw8WAh8ABQE1ZAIRDxYCHwAFA+aciGQCEw8WAh8ABZwBPGxpIGNsYXNzPSJuZXh0bSI+PGEgaHJlZj0icmVzZXJ2ZS5hc3B4P2NhbXB1cz0xJnltZD0yMDI1LzA1LzA0IDA6MDA6MDAiPjxzcGFuPjXmnIg05pel77yI5pel77yJPC9zcGFuPjwvYT48L2xpPjwvbGk+PGxpPjxzcGFuPjXmnIg15pel77yI5pyI77yJPC9zcGFuPjwvbGk+ZAIXDxYCHgdWaXNpYmxlZxYCAgEPFgIfAAUN5rGg6KKLIOWcsOS4i2QCGQ8WAh8BZxYCAgEPFgIfAAUL5rGg6KKLIDTpmo5kAhsPFgIfAWcWAgIBDxYCHwAFC+axoOiiiyAy5Y+wZAIdDxYCHwFnFgICAQ8WAh8ABQrmsaDooosgQjVGZAIfDxYCHwFnFgICAQ8WAh8ABR/msaDooosg5pWZ5a6k77yI5LyR5pel44Gu44G/77yJZAIhDw8WAh8BZ2QWBAIBDxYCHwAFDeaxoOiiiyDlnLDkuItkAgUPDxYCHwFoZGQCIw8PFgIfAWdkFgQCAQ8WAh8ABQvmsaDooosgNOmajmQCBQ8PFgIfAWhkZAIlDw8WAh8BZ2QWBAIBDxYCHwAFC+axoOiiiyAy5Y+wZAIFDw8WAh8BaGRkAicPDxYCHwFnZBYEAgEPFgIfAAUK5rGg6KKLIEI1RmQCBQ8PFgIfAWhkZAIpDw8WAh8BZ2QWBAIBDxYCHwAFH+axoOiiiyDmlZnlrqTvvIjkvJHml6Xjga7jgb/vvIlkAgUPDxYCHwFoZGQCKw8WAh8ABX08ZGl2IGlkPSdmb290ZXInPgo8ZGl2IGlkPSdjb3B5cmlnaHQnPgo8c3Bhbj5DT1BZUklHSFQgKEMpIFRva3lvIENvbGxlZ2Ugb2YgTXVzaWMsIEFMTCBSSUdIVFMgUkVTRVJWRUQuPC9zcGFuPgo8L2Rpdj4KPC9kaXY+CmRkiJQ2+RYuCtngC+gILLNxY49gnT+/k2Q+G7g9G6KeSV0="/>
+            </div>
+            <div>
+                <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="6F344856"/>
+            </div>
+            <div id="container">
+                <!-- ヘッダー -->
+                <div id='header'>
+                    <div id='site-title'></div>
+                    <div id='utility-nav'>
+                        <dl>
+                            <dt></dt>
+                            <dd id='nav-privacy'>
+                                <a href='../../personal/privacy/index.aspx'>
+                                    <img src='../../img/common/unav_privacy.png' width='106' height='16' alt='個人情報保護方針'/>
+                                </a>
+                            </dd>
+                            <dd class='user'>
+                                <span class='user-head'>ログインユーザ:</span>
+                                <span class='user-id'>
+                                    <span id='aspLoginName'>ユーザー名</span>
+                                </span>
+                            </dd>
+                            <dd class='logout'>
+                                <a href='../../logout.aspx'>
+                                    <span>ログアウト</span>
+                                </a>
+                            </dd>
+                        </dl>
+                    </div>
+                    <!-- /ヘッダー -->
+                    <!-- ナビゲーション -->
+                    <!-- /ナビゲーション -->
+                    <!-- ディスプレイ -->
+                    <div id="controlpannel">
+                        <div id="cp-box" class="parents">
+                            <dl>
+                                <dt>
+                                    <a href="index.aspx">
+                                        <span>トップページ</span>
+                                    </a>
+                                </dt>
+                                <dd class="present">
+                                    <span>練習室予約-空室情報</span>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <!-- /ディスプレイ -->
+                    <!-- コンテンツ -->
+                    <div id="content">
+                        <div style="text-align: center">
+                            <img id="Image1" src="../../img/slide/img_top1.jpg" style="border-width:0px;"/>
+                        </div>
+                        <br/>
+                        <!-- sidemenu -->
+                        <div id="sub">
+                            <div id="recbana">
+                                <h2></h2>
+                                <ul>
+                                    <li>
+                                        <a href='../facility/usage_guide.aspx'>
+                                            <img id='aspMenuImage1' src='../../img/common/bna_guide.png' alt='利用案内' style='margin-left: 6px;border-width: 0px;'/>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href='../facility/precautions.aspx'>
+                                            <img id='aspMenuImage2' src='../../img/common/bna_precautions.png' alt='注意事項' style='margin-left: 6px;border-width: 0px;'/>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href='../facility/index.aspx'>
+                                            <img id='aspMenuImage6' src='../../img/common/bana_recbana-facility.png' alt='練習室予約' style='margin-left: 6px; border-width: 0px;'/>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href='../facility/./pdf/20250424134948_1.pdf' target='_blank'>
+                                            <img id='aspMenuImage4' src='../../img/common/bana_schedule.png' alt='開放スケジュール' style='margin-left: 6px; border-width: 0px;'/>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href='../profile/edit.aspx'>
+                                            <img id='aspMenuImage5' src='../../img/common/bana_account.png' alt='アカウント設定' style='margin-left: 6px; border -width: 0px;'/>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- /sidemenu -->
+                        <div id="main" class="even">
+                            <!-- ページタイトル -->
+                            <div id="content-head">
+                                <h2>
+                                    <span>練習室予約</span>
+                                </h2>
+                                <p>練習室の予約を行います。</p>
+                            </div>
+                            <!-- /ページタイトル -->
+                            <!-- 練習室予約 -->
+                            <div id="reservation">
+                                <h3 class="situation-detail">
+                                    <span class="cnt">池袋キャンパス：
+                            2025年
+                            5月
+                            5日 （月）の予約 </span>
+                                </h3>
+                                <div id="calender">
+                                    <div id="calender-box">
+                                        <div id="calender-nav" class="parents">
+                                            <ul class="parents">
+                                                <li class="nextm">
+                                                    <a href="reserve.aspx?campus=1&ymd=2025/05/04 0:00:00">
+                                                        <span>5月4日（日）</span>
+                                                    </a>
+                                                </li>
+</li>
+<li>
+    <span>5月5日（月）</span>
+</li>
+</ul></div></div></div><span style="color: #FF0000;"></span>
+<div id="floor">
+    <span id="spnGrp1">
+        ■
+        <a href="#aGrp1Jump">
+            <span>池袋 地下</span>
+        </a>
+    </span>
+    <span id="spnGrp2">
+        ■
+        <a href="#aGrp2Jump">
+            <span>池袋 4階</span>
+        </a>
+    </span>
+    <span id="spnGrp3">
+        ■
+        <a href="#aGrp3Jump">
+            <span>池袋 2台</span>
+        </a>
+    </span>
+    <span id="spnGrp4">
+        ■
+        <a href="#aGrp4Jump">
+            <span>池袋 B5F</span>
+        </a>
+    </span>
+    <span id="spnGrp5">
+        ■
+        <a href="#aGrp5Jump">
+            <span>池袋 教室（休日のみ）</span>
+        </a>
+    </span>
+</div>
+<div id="pnlGrp1">
+    <h3 class="reservation-room">
+        <a name="aGrp1Jump">
+            <span>池袋 地下</span>
+        </a>
+    </h3>
+    <div id="situation">
+        <dl class="situation-area">
+            <dt class="situation-text2">
+                <span>予約したい時間帯をチェックし、予約ボタンを押して下さい。</span>
+            </dt>
+            <dd class="situation-img">
+                <span>
+                    <img src="../../img/reservation/img_floor_01.png" alt=""/>
+                </span>
+            </dd>
+        </dl>
+        <div id="time-schedule">
+            <table id="aspTable1" class="timetable" cellspacing="0" cellpadding="0" border="1" border="0" style="border-collapse:collapse;">
+                <tr>
+                    <td class="empty">&nbsp;</td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_700.gif" alt="7:00-7:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_800.gif" alt="8:00-8:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_900.gif" alt="9:00-9:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1000.gif" alt="10:00-10:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1100.gif" alt="11:00-11:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1200.gif" alt="12:00-12:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1300.gif" alt="13:00-13:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1400.gif" alt="14:00-14:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1500.gif" alt="15:00-15:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1600.gif" alt="16:00-16:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1700.gif" alt="17:00-17:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1800.gif" alt="18:00-18:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1900.gif" alt="19:00-19:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_2000.gif" alt="20:00-20:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_2100.gif" alt="21:00-21:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_2200.gif" alt="22:00-22:30"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="g">
+                        <span>A地下103（G）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="a">
+                        <span>A地下104（U）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="a">
+                        <span>A地下105（U）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="a">
+                        <span>A地下106（U）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="g">
+                        <span>A地下108（G）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="g">
+                        <span>A地下109（G）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="g">
+                        <span>A地下110（G）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="g">
+                        <span>A地下111（G）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="g">
+                        <span>A地下112（G）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="g">
+                        <span>A地下113（G）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="a">
+                        <span>A地下114（U）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="g">
+                        <span>A地下115（G）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="g">
+                        <span>A地下116（G）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="a">
+                        <span>A地下117（U）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="a">
+                        <span>A地下118（U）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="a">
+                        <span>A地下119（U）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="a">
+                        <span>A地下120（U）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="a">
+                        <span>A地下123（無）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="a">
+                        <span>A地下124（U）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="a">
+                        <span>A地下125（U）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="a">
+                        <span>A地下126（無）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+            </table>
+            <!-- style="display: none" -->
+            <div id="button-area1"></div>
+            <div class="top-returns">
+                <a href="#content-head">↑ このページの上へ</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="pnlGrp2">
+    <h3 class="reservation-room">
+        <a name="aGrp2Jump">
+            <span>池袋 4階</span>
+        </a>
+    </h3>
+    <div id="situation">
+        <dl class="situation-area">
+            <dt class="situation-text2">
+                <span>予約したい時間帯をチェックし、予約ボタンを押して下さい。</span>
+            </dt>
+            <dd class="situation-img">
+                <span>
+                    <img src="../../img/reservation/img_floor_01.png" alt=""/>
+                </span>
+            </dd>
+        </dl>
+        <div id="time-schedule">
+            <table id="aspTable2" class="timetable" cellspacing="0" cellpadding="0" border="1" border="0" style="border-collapse:collapse;">
+                <tr>
+                    <td class="empty">&nbsp;</td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_700.gif" alt="7:00-7:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_800.gif" alt="8:00-8:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_900.gif" alt="9:00-9:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1000.gif" alt="10:00-10:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1100.gif" alt="11:00-11:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1200.gif" alt="12:00-12:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1300.gif" alt="13:00-13:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1400.gif" alt="14:00-14:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1500.gif" alt="15:00-15:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1600.gif" alt="16:00-16:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1700.gif" alt="17:00-17:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1800.gif" alt="18:00-18:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1900.gif" alt="19:00-19:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_2000.gif" alt="20:00-20:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_2100.gif" alt="21:00-21:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_2200.gif" alt="22:00-22:30"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="a">
+                        <span>A405（U）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="a">
+                        <span>A406（U）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="g">
+                        <span>A412（G）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="g">
+                        <span>A413（G）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="g">
+                        <span>A414（G）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment3"></td>
+                    <td class="judgment3"></td>
+                    <td class="judgment3"></td>
+                    <td class="judgment3"></td>
+                    <td class="judgment3"></td>
+                    <td class="judgment3"></td>
+                    <td class="judgment3"></td>
+                    <td class="judgment3"></td>
+                    <td class="judgment3"></td>
+                    <td class="judgment3"></td>
+                    <td class="judgment3"></td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="g">
+                        <span>A415（G）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment3"></td>
+                    <td class="judgment3"></td>
+                    <td class="judgment3"></td>
+                    <td class="judgment3"></td>
+                    <td class="judgment3"></td>
+                    <td class="judgment3"></td>
+                    <td class="judgment3"></td>
+                    <td class="judgment3"></td>
+                    <td class="judgment3"></td>
+                    <td class="judgment3"></td>
+                    <td class="judgment3"></td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="a">
+                        <span>A416（U）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="a">
+                        <span>A417（U）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="a">
+                        <span>A418（無）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="a">
+                        <span>A419（U）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="a">
+                        <span>A420（U）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="a">
+                        <span>A421（U）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="a">
+                        <span>A422（U）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="a">
+                        <span>A423（U）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="a">
+                        <span>A424（U）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="a">
+                        <span>A425（U）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="a">
+                        <span>A426（U）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="a">
+                        <span>A427（U）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="a">
+                        <span>A428（U）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="g">
+                        <span>A429（G）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="g">
+                        <span>A430（G）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="g">
+                        <span>A431（G）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="g">
+                        <span>A432（G）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="a">
+                        <span>A433（U）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+            </table>
+            <!-- style="display: none" -->
+            <div id="button-area2"></div>
+            <div class="top-returns">
+                <a href="#content-head">↑ このページの上へ</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="pnlGrp3">
+    <h3 class="reservation-room">
+        <a name="aGrp3Jump">
+            <span>池袋 2台</span>
+        </a>
+    </h3>
+    <div id="situation">
+        <dl class="situation-area">
+            <dt class="situation-text2">
+                <span>予約したい時間帯をチェックし、予約ボタンを押して下さい。</span>
+            </dt>
+            <dd class="situation-img">
+                <span>
+                    <img src="../../img/reservation/img_floor_01.png" alt=""/>
+                </span>
+            </dd>
+        </dl>
+        <div id="time-schedule">
+            <table id="aspTable3" class="timetable" cellspacing="0" cellpadding="0" border="1" border="0" style="border-collapse:collapse;">
+                <tr>
+                    <td class="empty">&nbsp;</td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_700.gif" alt="7:00-7:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_800.gif" alt="8:00-8:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_900.gif" alt="9:00-9:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1000.gif" alt="10:00-10:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1100.gif" alt="11:00-11:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1200.gif" alt="12:00-12:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1300.gif" alt="13:00-13:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1400.gif" alt="14:00-14:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1500.gif" alt="15:00-15:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1600.gif" alt="16:00-16:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1700.gif" alt="17:00-17:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1800.gif" alt="18:00-18:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1900.gif" alt="19:00-19:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_2000.gif" alt="20:00-20:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_2100.gif" alt="21:00-21:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_2200.gif" alt="22:00-22:30"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="g">
+                        <span>A401（G2台）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="g">
+                        <span>A407（G2台）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="g">
+                        <span>A402（G2台）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="g">
+                        <span>A409（G2台）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+            </table>
+            <!-- style="display: none" -->
+            <div id="button-area3"></div>
+            <div class="top-returns">
+                <a href="#content-head">↑ このページの上へ</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="pnlGrp4">
+    <h3 class="reservation-room">
+        <a name="aGrp4Jump">
+            <span>池袋 B5F</span>
+        </a>
+    </h3>
+    <div id="situation">
+        <dl class="situation-area">
+            <dt class="situation-text2">
+                <span>予約したい時間帯をチェックし、予約ボタンを押して下さい。</span>
+            </dt>
+            <dd class="situation-img">
+                <span>
+                    <img src="../../img/reservation/img_floor_01.png" alt=""/>
+                </span>
+            </dd>
+        </dl>
+        <div id="time-schedule">
+            <table id="aspTable4" class="timetable" cellspacing="0" cellpadding="0" border="1" border="0" style="border-collapse:collapse;">
+                <tr>
+                    <td class="empty">&nbsp;</td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_700.gif" alt="7:00-7:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_800.gif" alt="8:00-8:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_900.gif" alt="9:00-9:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1000.gif" alt="10:00-10:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1100.gif" alt="11:00-11:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1200.gif" alt="12:00-12:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1300.gif" alt="13:00-13:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1400.gif" alt="14:00-14:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1500.gif" alt="15:00-15:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1600.gif" alt="16:00-16:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1700.gif" alt="17:00-17:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1800.gif" alt="18:00-18:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1900.gif" alt="19:00-19:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_2000.gif" alt="20:00-20:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_2100.gif" alt="21:00-21:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_2200.gif" alt="22:00-22:30"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="g">
+                        <span>B503（G）</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4"></td>
+                </tr>
+            </table>
+            <!-- style="display: none" -->
+            <div id="button-area4"></div>
+        </div>
+        <div class="top-returns">
+            <a href="#content-head">↑ このページの上へ</a>
+        </div>
+    </div>
+</div>
+<div id="pnlGrp5">
+    <h3 class="reservation-room">
+        <a name="aGrp5Jump">
+            <span>池袋 教室（休日のみ）</span>
+        </a>
+    </h3>
+    <div id="situation">
+        <dl class="situation-area">
+            <dt class="situation-text2">
+                <span>予約したい時間帯をチェックし、予約ボタンを押して下さい。</span>
+            </dt>
+            <dd class="situation-img">
+                <span>
+                    <img src="../../img/reservation/img_floor_01.png" alt=""/>
+                </span>
+            </dd>
+        </dl>
+        <div id="time-schedule">
+            <table id="aspTable5" class="timetable" cellspacing="0" cellpadding="0" border="1" border="0" style="border-collapse:collapse;">
+                <tr>
+                    <td class="empty">&nbsp;</td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_700.gif" alt="7:00-7:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_800.gif" alt="8:00-8:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_900.gif" alt="9:00-9:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1000.gif" alt="10:00-10:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1100.gif" alt="11:00-11:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1200.gif" alt="12:00-12:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1300.gif" alt="13:00-13:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1400.gif" alt="14:00-14:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1500.gif" alt="15:00-15:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1600.gif" alt="16:00-16:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1700.gif" alt="17:00-17:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1800.gif" alt="18:00-18:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_1900.gif" alt="19:00-19:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_2000.gif" alt="20:00-20:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_2100.gif" alt="21:00-21:30"/>
+                    </td>
+                    <td class="division" colspan="2">
+                        <img src="../../img/reservation/img_situation_2200.gif" alt="22:00-22:30"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="g">
+                        <span>A301</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="g">
+                        <span>A302</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="g">
+                        <span>A303</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment2"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+                <tr>
+                    <td class="g">
+                        <span>A304</span>
+                    </td>
+                    <td class="judgment4"></td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4">〇</td>
+                    <td class="judgment4"></td>
+                </tr>
+            </table>
+            <!-- style="display: none" -->
+            <div id="button-area5"></div>
+        </div>
+        <div class="top-returns">
+            <a href="#content-head">↑ このページの上へ</a>
+        </div>
+    </div>
+</div>
+</div>
+<!-- /練習室予約 -->
+</div></div>
+<!-- /コンテンツ -->
+<!-- フッター -->
+<div id='footer'>
+    <div id='copyright'>
+        <span>COPYRIGHT (C) Tokyo College of Music, ALL RIGHTS RESERVED.</span>
+    </div>
+</div>
+<!-- /フッター -->
+</div></form></body></html>

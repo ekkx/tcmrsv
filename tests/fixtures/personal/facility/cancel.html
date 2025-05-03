@@ -1,0 +1,252 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja" dir="ltr">
+<head id="Head1"><link rel="shortcut icon" href="../../favicon.ico" /><link type="text/css" rel="stylesheet" media="screen, projection, tv, print" href="../../css/categories.css" /><link type="text/css" rel="alternate stylesheet" href="../../css/categories_s.css" title="Small" /><link type="text/css" rel="alternate stylesheet" href="../../css/categories_l.css" title="Large" />
+
+    <script type="text/javascript" src="../../js/styleswitcher.js"></script>
+
+    <script type="text/javascript" src="../../js/even.js"></script>
+
+    <script type="text/javascript">
+        history.forward();
+    </script>
+
+    <script type="text/javascript">
+        var rand = Math.random();
+        var interval = 600; //処理を実行するまでの秒数
+        var NewWindow;
+        var i;
+
+        var timer = null
+
+        if (navigator.appVersion.charAt(0) * 1 >= 4) {
+            function setTimer() {
+                timer = setTimeout("onidle()", 1000 * interval)
+            }
+            function resetTimer() {
+                if (timer != null) clearTimeout(timer)
+                setTimer()
+            }
+
+            var _f = new Function("e", "resetTimer();document.routeEvent&&document.routeEvent(e)")
+            if (navigator.appName == "Netscape" && navigator.appVersion.charAt(0) == "4")
+                document.captureEvents(Event.MOUSEMOVE | Event.KEYDOWN | Event.MOUSEDOWN)
+            document.onmousemove = _f
+            document.onkeydown = _f
+            document.onmousedown = _f
+            setTimer()
+        }
+        if (NewWindow != null) {
+            NewWindow.close();
+        }
+        function onidle() {
+            // 一定時間処理が無かった場合別ページを表示する
+            window.open("../../index.aspx", "_self");
+        }
+
+        function wopen(URL) {
+            NewWindow = window.open(URL, 'NW', 'width=820,height=500,scrollbars=yes,left=100,top=120');
+            //NewWindow.focus()
+        }
+    </script>
+
+    <script type="text/javascript" src="../../js/eventaspect.js"></script>
+
+    <title>
+	練習室予約キャンセル ｜ 東京音楽大学
+</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta http-equiv="Content-Style-Type" content="text/css" /><meta http-equiv="Content-Style-Type" content="text/javascript" /><meta http-equiv="Imagetoolbar" content="no" /><meta name="copyright" content="(C) 東京音楽大学" /><meta name="description" content="東京音楽大学の練習室予約の専用サイトです。中目黒・代官山キャンパス、池袋キャンパスの練習室の予約が可能です。" /><meta name="keywords" content="東京音楽大学,練習室,予約,中目黒・代官山キャンパス,池袋キャンパス" /></head>
+<body id="categories" class="corp-page">
+    <form name="form1" method="post" action="./cancel.aspx?id=59253854-3628-f011-8c4e-000d3a51476f" onkeypress="javascript:return WebForm_FireDefaultButton(event, 'YoyakuCancelButton')" id="form1">
+<div>
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=GEP0eWWitDck8PPFnGi2KeLRKiddAnE7yRFnEQuMMrv24S1sjcgTZXZjH2f9ouAH-KPyROk4Y3z9vW0HqRlLg3qFq4JWGrIqpM_BiKrudwY1&amp;t=637715520363054636" type="text/javascript"></script>
+
+
+<script src="/WebResource.axd?d=rJvzNjbFZ_rR1LRM7BUG_XvjxJL938yjqMUS6xBzEPUfTwM0OIhJJGZ2ps-GQ8Ho_YEcSc8ojIi8r1ztgq3PWkPDlH1DVefUGSBccQ1V8281&amp;t=637715520363054636" type="text/javascript"></script>
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="3E62E1EF" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAMTylI0ZTQli7rQ5n6CG8GmJUNxFqqeHOZ2TNVZXE/5YxEgRs+yIYYUUl3VoeTSUWuK+nd2XMTu6qZFXQoyLI1uet/ClpNaAAV7EiVicpqVPQ==" />
+</div>
+        <div id="container">
+            <!-- ヘッダー -->
+            <div id='header'>
+<div id='site-title'>
+</div>
+<div id='utility-nav'>
+<dl>
+<dt></dt>
+<dd id='nav-privacy'>
+<a href='../../personal/privacy/index.aspx'>
+<img src='../../img/common/unav_privacy.png' width='106' height='16' alt='個人情報保護方針' /></a>
+</dd>
+<dd class='user'>
+<span class='user-head'>ログインユーザ:</span>
+<span class='user-id'>
+<span id='aspLoginName'>ユーザー名</span></span>
+</dd>
+<dd class='logout'>
+<a href='../../logout.aspx'>
+<span>ログアウト</span></a>
+</dd>
+</dl>
+</div>
+
+            <!-- /ヘッダー -->
+            <!-- ナビゲーション -->
+
+            <!-- /ナビゲーション -->
+            <!-- ディスプレイ -->
+            <div id="controlpannel">
+                <div id="cp-box" class="parents">
+                    <dl>
+                        <dt><a href="index.aspx"><span>トップページ</span></a></dt>
+                        <dd class="present">
+                            <span>練習室予約-キャンセル内容確認</span></dd>
+                    </dl>
+                </div>
+            </div>
+            <!-- /ディスプレイ -->
+            <!-- コンテンツ -->
+            <div id="content">
+                <div style="text-align: center">
+                    <img id="Image1" src="../../img/slide/img_top1.jpg" style="border-width:0px;" />
+                </div>
+                <br />
+                <!-- sidemenu -->
+                <div id="sub">
+                    <div id="recbana">
+                        <h2></h2>
+                        <ul>
+<li>
+<a href='../facility/usage_guide.aspx'>
+<img id='aspMenuImage1' src='../../img/common/bna_guide.png' alt='利用案内' style='margin-left: 6px;border-width: 0px;' />
+</a>
+</li>
+<li>
+<a href='../facility/precautions.aspx'>
+<img id='aspMenuImage2' src='../../img/common/bna_precautions.png' alt='注意事項' style='margin-left: 6px;border-width: 0px;' />
+</a>
+</li>
+<li>
+<a href='../facility/index.aspx'>
+<img id='aspMenuImage6' src='../../img/common/bana_recbana-facility.png' alt='練習室予約' style='margin-left: 6px; border-width: 0px;' />
+</a>
+</li>
+<li>
+<a href='../facility/./pdf/20250424134948_1.pdf' target='_blank' >
+<img id='aspMenuImage4' src='../../img/common/bana_schedule.png' alt='開放スケジュール' style='margin-left: 6px; border-width: 0px;' />
+</a>
+</li>
+<li>
+<a href='../profile/edit.aspx'>
+<img id='aspMenuImage5' src='../../img/common/bana_account.png' alt='アカウント設定' style='margin-left: 6px; border -width: 0px;' />
+</a>
+</li>
+</ul>
+
+                    </div>
+                </div>
+                <!-- /sidemenu -->
+                <div id="main" class="even">
+                    <!-- ページタイトル -->
+                    <div id="content-head">
+                        <h2>
+                            <span>練習室予約</span></h2>
+                        <p>
+                            予約のキャンセルを行います。
+                        </p>
+                    </div>
+                    <!-- /ページタイトル -->
+                    <!-- 練習室予約 -->
+                    <div id="reservation">
+                        <h3 class="facility">
+                            <span class="cnt">予約キャンセル内容</span></h3>
+                        <div id="reservation-list">
+                            <dl>
+                                <dt class="res-room">
+                                    <span>
+                                        中目黒・代官山キャンパス</span></dt>
+                                <dt class="res-date"><span>
+                                    2025年
+								5月
+								4日 （日）
+                                </span></dt>
+                                <dd class="res-time">
+                                    <span>
+                                        12:
+									00-
+									13:
+									00
+                                    </span>
+                                </dd>
+                                <dd class="res-room">
+                                    <span>
+                                        P 200（G）</span></dd>
+                            </dl>
+                        </div>
+                        <div id="reason" class="parents">
+                            <dl class="parents">
+                                <dt><span>キャンセル理由を入力して下さい。（※必須）</span></dt>
+                                <dd>
+                                    <input name="freeword" type="text" maxlength="100" id="freeword" />
+                                </dd>
+                                <dd>
+                                    <span class="message">
+                                        </span>
+                                </dd>
+                            </dl>
+                        </div>
+                        <div id="operates">
+                            <span>キャンセル理由を入力し、よろしければ「予約キャンセル」ボタンをクリックしてください。</span>
+                        </div>
+                        <div id="button-area" style="margin: 0 auto; width: 250px">
+                            <input type="submit" name="YoyakuCancelButton" value="" id="YoyakuCancelButton" class="btn_cansel" />
+                            <a href="index.aspx">
+                                <img src="../../img/reservation/img_button_returns.gif" width="121" height="25" border="0" alt="前に戻る" style="float: right" /></a>
+                        </div>
+                    </div>
+                    <!-- /練習室予約 -->
+                </div>
+            </div>
+            <!-- /コンテンツ -->
+            <!-- フッター -->
+            <div id='footer'>
+<div id='copyright'>
+<span>COPYRIGHT (C) Tokyo College of Music, ALL RIGHTS RESERVED.</span>
+</div>
+</div>
+
+            <!-- /フッター -->
+        </div>
+
+
+<script type="text/javascript">
+//<![CDATA[
+WebForm_AutoFocus('YoyakuCancelButton');//]]>
+</script>
+</form>
+</body>
+</html>
