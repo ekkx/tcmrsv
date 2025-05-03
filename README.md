@@ -26,7 +26,7 @@ func main() {
   if err = rsv.Reserve(&tcmrsv.ReserveParams{
     Campus:     tcmrsv.CampusIkebukuro,
     RoomID:     "42d1eacc-60d5-428b-8c64-aef11a512c30",
-    Date:       time.Now(),
+    Date:       time.Now().In(tcmrsv.JST()),
     FromHour:   12,
     FromMinute: 0,
     ToHour:     14,
@@ -48,6 +48,6 @@ func main() {
 - [x] 練習室一覧を固定化（ID, ピアノの種類）
 - [x] 練習室とキャンパスを紐付け
 - [x] できる範囲で入力値のバリデーション
-- [ ] 3 日以内の予約しか受け付けない（12:00AM~12:00PM までは 2 日以内）
-- [ ] 利用可能な練習室として、◯ か disabled ではない `<input>` のみ取得
+- [x] 3 日以内の予約しか受け付けない（12:00AM~12:00PM までは 2 日以内）
+- [x] 利用可能な練習室として、◯ か disabled ではない `<input>` のみ取得
 - [ ] レスポンスのモックテスト

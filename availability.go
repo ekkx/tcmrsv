@@ -13,15 +13,16 @@ import (
 type GetRoomAvailabilityParams struct {
 	Campus Campus
 	Date   time.Time
-	// TODO: Add "Strict bool" field to only get available rooms with ○ or enabled input
 }
 
 // 利用可能な練習室一覧を取得する
 func (c *Client) GetRoomAvailability(params *GetRoomAvailabilityParams) ([]RoomAvailability, error) {
+	now := time.Now().In(JST())
+
 	if !params.Campus.IsValid() {
 		return nil, ErrInvalidCampus
 	}
-	if IsDateWithin2Days(params.Date) {
+	if !IsDateWithin2Days(now, params.Date) {
 		return nil, ErrInvalidTimeRange
 	}
 
@@ -30,7 +31,7 @@ func (c *Client) GetRoomAvailability(params *GetRoomAvailabilityParams) ([]RoomA
 		return nil, err
 	}
 
-	jstDate := time.Date(params.Date.Year(), params.Date.Month(), params.Date.Day(), 0, 0, 0, 0, jst())
+	jstDate := time.Date(params.Date.Year(), params.Date.Month(), params.Date.Day(), 0, 0, 0, 0, JST())
 
 	q := u.Query()
 	q.Set("campus", string(params.Campus))
@@ -58,7 +59,6 @@ func (c *Client) GetRoomAvailability(params *GetRoomAvailabilityParams) ([]RoomA
 
 	const baseHour = 7
 
-	now := time.Now().In(jst())
 	isToday := params.Date.Year() == now.Year() &&
 		params.Date.Month() == now.Month() &&
 		params.Date.Day() == now.Day()
@@ -101,25 +101,59 @@ func (c *Client) GetRoomAvailability(params *GetRoomAvailabilityParams) ([]RoomA
 					attrs[a.Key] = a.Val
 				}
 
+				class := attrs["class"]
+				isJudgment4 := strings.HasPrefix(class, "judgment4")
+
 				// 部屋
 				if colIndex == 1 {
 					continue
 				}
 
 				// 空き時間
-				if colIndex >= 2 && currentAvailability != nil {
-					class := attrs["class"]
-					style := attrs["style"]
-					isAvailable := strings.HasPrefix(class, "judgment4") || style == "text-align:center;"
-					disabled := false
+				if colIndex >= 2 && currentAvailability != nil && isJudgment4 {
+					tdHasAvailableInput := false
+					tdHasCircle := false
+					depth := 1
 
-					if isAvailable && !disabled {
+					for depth > 0 {
+						tt := z.Next()
+						switch tt {
+						case html.ErrorToken:
+							depth = 0
+						case html.StartTagToken, html.SelfClosingTagToken:
+							t := z.Token()
+							if t.Data == "input" {
+								disabled := false
+								for _, a := range t.Attr {
+									if a.Key == "disabled" {
+										disabled = true
+										break
+									}
+								}
+								if !disabled {
+									tdHasAvailableInput = true
+								}
+							}
+						case html.TextToken:
+							text := strings.TrimSpace(z.Token().Data)
+							if strings.Contains(text, "〇") {
+								tdHasCircle = true
+							}
+						case html.EndTagToken:
+							t := z.Token()
+							if t.Data == "td" {
+								depth--
+							}
+						}
+					}
+
+					if tdHasAvailableInput || tdHasCircle {
 						offset := colIndex - 2
 						hour := baseHour + (offset*30)/60
 						minute := (offset * 30) % 60
 
 						if isToday {
-							slotTime := time.Date(params.Date.Year(), params.Date.Month(), params.Date.Day(), hour, minute, 0, 0, jst())
+							slotTime := time.Date(params.Date.Year(), params.Date.Month(), params.Date.Day(), hour, minute, 0, 0, JST())
 							if slotTime.Before(now) {
 								break
 							}

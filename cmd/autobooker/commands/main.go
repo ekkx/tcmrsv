@@ -23,18 +23,18 @@ func Run() error {
 		return err
 	}
 
-	err = rsv.Reserve(&tcmrsv.ReserveParams{
-		Campus:     tcmrsv.CampusIkebukuro,
-		RoomID:     "bbf2e624-2f48-ec11-8c60-002248696fd6",
-		Date:       time.Now().AddDate(0, 0, 2),
-		FromHour:   17,
-		FromMinute: 00,
-		ToHour:     22,
-		ToMinute:   30,
-	})
-	if err != nil {
-		return err
-	}
+	// err = rsv.Reserve(&tcmrsv.ReserveParams{
+	// 	Campus:     tcmrsv.CampusIkebukuro,
+	// 	RoomID:     "bbf2e624-2f48-ec11-8c60-002248696fd6",
+	// 	Date:       time.Now().AddDate(0, 0, 2),
+	// 	FromHour:   17,
+	// 	FromMinute: 00,
+	// 	ToHour:     22,
+	// 	ToMinute:   30,
+	// })
+	// if err != nil {
+	// 	return err
+	// }
 
 	// err = rsv.Reserve(&tcmrsv.ReserveParams{
 	// 	Campus:     tcmrsv.CampusNakameguro,
@@ -49,32 +49,32 @@ func Run() error {
 	// 	return err
 	// }
 
-	// rooms, err := rsv.GetRoomAvailability(&tcmrsv.GetRoomAvailabilityParams{
-	// 	Campus: tcmrsv.CampusNakameguro,
-	// 	Date:   time.Now().AddDate(0, 0, 0),
-	// })
-	// if err != nil {
-	// 	return err
-	// }
-
-	// for _, room := range rooms {
-	// 	if room.Room.Name == "P 443（G）" {
-	// 		fmt.Println("--------")
-	// 		fmt.Println(room.Room.Name)
-	// 		fmt.Println(room.Room.PianoType)
-	// 		fmt.Println(room.AvailableTimes)
-	// 	}
-	// }
-
-	rsvs, err := rsv.GetMyReservations()
+	rooms, err := rsv.GetRoomAvailability(&tcmrsv.GetRoomAvailabilityParams{
+		Campus: tcmrsv.CampusNakameguro,
+		Date:   time.Now().In(tcmrsv.JST()),
+	})
 	if err != nil {
 		return err
 	}
 
-	for _, r := range rsvs {
-		fmt.Println("--------")
-		fmt.Println(r)
+	for _, room := range rooms {
+		if room.Room.Name == "C401" {
+			fmt.Println("--------")
+			fmt.Println(room.Room.Name)
+			fmt.Println(room.Room.PianoType)
+			fmt.Println(room.AvailableTimes)
+		}
 	}
+
+	// rsvs, err := rsv.GetMyReservations()
+	// if err != nil {
+	// 	return err
+	// }
+
+	// for _, r := range rsvs {
+	// 	fmt.Println("--------")
+	// 	fmt.Println(r)
+	// }
 
 	return nil
 }

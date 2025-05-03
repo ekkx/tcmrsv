@@ -147,7 +147,7 @@ func (c *Client) Reserve(params *ReserveParams) error {
 	if !IsIDValid(params.RoomID) {
 		return ErrInvalidIDFormat
 	}
-	if !IsDateWithin2Days(params.Date) {
+	if !IsDateWithin2Days(time.Now().In(JST()), params.Date) {
 		return ErrDateOutOfRange
 	}
 	if !IsTimeRangeValid(params.FromHour, params.FromMinute, params.ToHour, params.ToMinute) {
@@ -162,7 +162,7 @@ func (c *Client) Reserve(params *ReserveParams) error {
 		return err
 	}
 
-	jstDate := time.Date(params.Date.Year(), params.Date.Month(), params.Date.Day(), 0, 0, 0, 0, jst())
+	jstDate := time.Date(params.Date.Year(), params.Date.Month(), params.Date.Day(), 0, 0, 0, 0, JST())
 
 	q := u.Query()
 	q.Set("campus", string(params.Campus))
