@@ -5,6 +5,6 @@ services:
     volumes:
       - ..:/tcmrsv
     env_file:
-      - ../.env
+      - ./.env
     working_dir: /tcmrsv
     tty: true

@@ -2,6 +2,7 @@ package commands
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/ekkx/tcmrsv"
 )
@@ -22,18 +23,18 @@ func Run() error {
 		return err
 	}
 
-	// err = rsv.Reserve(&tcmrsv.ReserveParams{
-	// 	Campus:     tcmrsv.CampusIkebukuro,
-	// 	RoomID:     "b9f2e624-2f48-ec11-8c60-002248696fd6",
-	// 	Date:       time.Now().AddDate(0, 0, 0),
-	// 	FromHour:   19,
-	// 	FromMinute: 00,
-	// 	ToHour:     20,
-	// 	ToMinute:   00,
-	// })
-	// if err != nil {
-	// 	return err
-	// }
+	err = rsv.Reserve(&tcmrsv.ReserveParams{
+		Campus:     tcmrsv.CampusIkebukuro,
+		RoomID:     "bbf2e624-2f48-ec11-8c60-002248696fd6",
+		Date:       time.Now().AddDate(0, 0, 2),
+		FromHour:   17,
+		FromMinute: 00,
+		ToHour:     22,
+		ToMinute:   30,
+	})
+	if err != nil {
+		return err
+	}
 
 	// err = rsv.Reserve(&tcmrsv.ReserveParams{
 	// 	Campus:     tcmrsv.CampusNakameguro,

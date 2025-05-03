@@ -15,9 +15,9 @@ type GetRoomsFilteredParams struct {
 	Campuses     []Campus
 }
 
-func GetRoomsFiltered(params GetRoomsFilteredParams) []Room {
+func (c *Client) GetRoomsFiltered(params GetRoomsFilteredParams) []Room {
 	var result []Room
-	for _, room := range GetRooms() {
+	for _, room := range c.GetRooms() {
 		if params.Name != nil && !strings.Contains(strings.ToLower(room.Name), strings.ToLower(*params.Name)) {
 			continue
 		}
@@ -56,7 +56,7 @@ func GetRoomsFiltered(params GetRoomsFilteredParams) []Room {
 	return result
 }
 
-func GetRooms() []Room {
+func (c *Client) GetRooms() []Room {
 	return []Room{
 		// 中目黒・代官山 2F
 		{

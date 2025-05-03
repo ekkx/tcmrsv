@@ -13,6 +13,7 @@ import (
 type GetRoomAvailabilityParams struct {
 	Campus Campus
 	Date   time.Time
+	// TODO: Add "Strict bool" field to only get available rooms with ○ or enabled input
 }
 
 // 利用可能な練習室一覧を取得する
@@ -24,7 +25,7 @@ func (c *Client) GetRoomAvailability(params *GetRoomAvailabilityParams) ([]RoomA
 		return nil, ErrInvalidTimeRange
 	}
 
-	u, err := url.Parse(c.baseURL+ENDPOINT_RESERVE)
+	u, err := url.Parse(c.baseURL + ENDPOINT_RESERVE)
 	if err != nil {
 		return nil, err
 	}
@@ -135,7 +136,7 @@ func (c *Client) GetRoomAvailability(params *GetRoomAvailabilityParams) ([]RoomA
 				if insideRow && colIndex == 1 {
 					if z.Next() == html.TextToken {
 						currentRoomName = strings.TrimSpace(z.Token().Data)
-						for _, r := range GetRooms() {
+						for _, r := range c.GetRooms() {
 							if r.Name == currentRoomName {
 								currentAvailability = &RoomAvailability{Room: r}
 								break
