@@ -153,7 +153,7 @@ func (c *Client) Reserve(params *ReserveParams) error {
 	if !IsTimeRangeValid(params.FromHour, params.FromMinute, params.ToHour, params.ToMinute) {
 		return ErrInvalidTimeRange
 	}
-	if !IsTimeInFuture(params.FromHour, params.FromMinute) {
+	if !IsTimeInFuture(params.FromHour, params.FromMinute, params.Date) {
 		return ErrTimeInPast
 	}
 

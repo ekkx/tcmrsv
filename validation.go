@@ -54,12 +54,14 @@ func IsTimeRangeValid(fromHour, fromMinute, toHour, toMinute int) bool {
 	return toTotal > fromTotal
 }
 
-func IsTimeInFuture(fromHour, fromMinute int) bool {
+func IsTimeInFuture(fromHour, fromMinute int, date time.Time) bool {
 	now := time.Now().In(JST())
-	currentTotal := now.Hour()*60 + now.Minute()
-	fromTotal := fromHour*60 + fromMinute
-
-	return fromTotal >= currentTotal
+	if date.Year() == now.Year() && date.Month() == now.Month() && date.Day() == now.Day() {
+		currentTotal := now.Hour()*60 + now.Minute()
+		fromTotal := fromHour*60 + fromMinute
+		return fromTotal >= currentTotal
+	}
+	return true
 }
 
 func IsCommentValid(comment string) bool {
