@@ -102,7 +102,7 @@ func TestIsTimeInFuture(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		got := IsTimeInFuture(tt.fromH, tt.fromM)
+		got := IsTimeInFuture(tt.fromH, tt.fromM, now)
 		if got != tt.want {
 			t.Errorf("IsTimeInFuture(%02d:%02d) = %v; want %v (current: %02d:%02d, total=%d)",
 				tt.fromH, tt.fromM, got, tt.want, h, m, currentTotal)
