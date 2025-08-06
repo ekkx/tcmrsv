@@ -141,12 +141,13 @@ func TestGetRoomAvailability(t *testing.T) {
 	})
 
 	t.Run("InvalidDateRange", func(t *testing.T) {
-		client := New()
+		mockServer := NewMockServer(CreateHandler(map[string]http.HandlerFunc{}))
+		defer mockServer.Close()
 
 		// 現在時刻から3日後の日付を設定（2日以内の制限を超える）
 		futureDateOutOfRange := Today().AddDays(3)
 
-		_, err := client.GetRoomAvailability(&GetRoomAvailabilityParams{
+		_, err := mockServer.Client.GetRoomAvailability(&GetRoomAvailabilityParams{
 			Campus: CampusNakameguro,
 			Date:   futureDateOutOfRange,
 		})

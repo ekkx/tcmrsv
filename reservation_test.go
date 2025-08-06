@@ -38,7 +38,7 @@ func TestGetMyReservations(t *testing.T) {
 			t.Errorf("Expected date to be 2025年05月05日（月）, got %s", reservations[0].Date)
 		}
 
-		if reservations[0].FromHour == 17 && reservations[0].FromMinute == 0 && reservations[0].ToHour == 22 && reservations[0].ToMinute == 30 {
+		if !(reservations[0].FromHour == 17 && reservations[0].FromMinute == 0 && reservations[0].ToHour == 22 && reservations[0].ToMinute == 30) {
 			t.Errorf("Expected time range to be 17:00-22:30, got %s", fmt.Sprintf("%02d:%02d-%02d:%02d", reservations[0].FromHour, reservations[0].FromMinute, reservations[0].ToHour, reservations[0].ToMinute))
 		}
 

@@ -15,16 +15,16 @@ func IsDateWithin2Days(now time.Time, date Date) bool {
 	today := time.Date(now.Year(), now.Month(), now.Day(), 0, 0, 0, 0, jst)
 
 	// 3日後の予約が解放されるのは、午後12時から
-	isMorning := today.Hour() < 12
+	isMorning := now.Hour() < 12
 
 	var endDate time.Time
 	if isMorning {
-		endDate = today.AddDate(0, 0, 2)
+		endDate = today.AddDate(0, 0, 1)
 	} else {
-		endDate = today.AddDate(0, 0, 3)
+		endDate = today.AddDate(0, 0, 2)
 	}
 
-	return date.IsAfter(FromTime(today)) && date.IsBefore(FromTime(endDate))
+	return !date.IsBefore(FromTime(today)) && !date.IsAfter(FromTime(endDate))
 }
 
 func IsTimeRangeValid(fromHour, fromMinute, toHour, toMinute int) bool {
