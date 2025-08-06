@@ -12,12 +12,12 @@ import (
 
 type GetRoomAvailabilityParams struct {
 	Campus Campus
-	Date   time.Time
+	Date   Date
 }
 
 // 利用可能な練習室一覧を取得する
 func (c *Client) GetRoomAvailability(params *GetRoomAvailabilityParams) ([]RoomAvailability, error) {
-	now := time.Now().In(JST())
+	now := time.Now().In(jst)
 
 	if !params.Campus.IsValid() {
 		return nil, ErrInvalidCampus
@@ -31,11 +31,9 @@ func (c *Client) GetRoomAvailability(params *GetRoomAvailabilityParams) ([]RoomA
 		return nil, err
 	}
 
-	jstDate := time.Date(params.Date.Year(), params.Date.Month(), params.Date.Day(), 0, 0, 0, 0, JST())
-
 	q := u.Query()
 	q.Set("campus", string(params.Campus))
-	q.Set("ymd", jstDate.Format("2006/01/02 15:04:05"))
+	q.Set("ymd", params.Date.ToTime().Format("2006/01/02 15:04:05"))
 	u.RawQuery = q.Encode()
 
 	req, err := http.NewRequest(http.MethodGet, u.String(), nil)
@@ -59,9 +57,7 @@ func (c *Client) GetRoomAvailability(params *GetRoomAvailabilityParams) ([]RoomA
 
 	const baseHour = 7
 
-	isToday := params.Date.Year() == now.Year() &&
-		params.Date.Month() == now.Month() &&
-		params.Date.Day() == now.Day()
+	isToday := params.Date.Equals(Today())
 
 	for {
 		tt := z.Next()
@@ -153,7 +149,7 @@ func (c *Client) GetRoomAvailability(params *GetRoomAvailabilityParams) ([]RoomA
 						minute := (offset * 30) % 60
 
 						if isToday {
-							slotTime := time.Date(params.Date.Year(), params.Date.Month(), params.Date.Day(), hour, minute, 0, 0, JST())
+							slotTime := time.Date(params.Date.Year, params.Date.Month, params.Date.Day, hour, minute, 0, 0, jst)
 							if slotTime.Before(now) {
 								break
 							}

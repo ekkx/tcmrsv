@@ -3,7 +3,6 @@ package tcmrsv
 import (
 	"net/http"
 	"testing"
-	"time"
 )
 
 func TestGetRoomAvailability(t *testing.T) {
@@ -32,7 +31,7 @@ func TestGetRoomAvailability(t *testing.T) {
 		defer mockServer.Close()
 
 		// 現在時刻から1日後の日付を設定
-		tomorrow := time.Now().In(JST()).AddDate(0, 0, 1)
+		tomorrow := Today().AddDays(1)
 
 		availabilities, err := mockServer.Client.GetRoomAvailability(&GetRoomAvailabilityParams{
 			Campus: CampusNakameguro,
@@ -91,7 +90,7 @@ func TestGetRoomAvailability(t *testing.T) {
 		defer mockServer.Close()
 
 		// 現在時刻から1日後の日付を設定
-		tomorrow := time.Now().In(JST()).AddDate(0, 0, 1)
+		tomorrow := Today().AddDays(1)
 
 		availabilities, err := mockServer.Client.GetRoomAvailability(&GetRoomAvailabilityParams{
 			Campus: CampusIkebukuro,
@@ -129,7 +128,7 @@ func TestGetRoomAvailability(t *testing.T) {
 		client := New()
 
 		// 現在時刻から1日後の日付を設定
-		tomorrow := time.Now().In(JST()).AddDate(0, 0, 1)
+		tomorrow := Today().AddDays(1)
 
 		_, err := client.GetRoomAvailability(&GetRoomAvailabilityParams{
 			Campus: CampusUnknown,
@@ -145,7 +144,7 @@ func TestGetRoomAvailability(t *testing.T) {
 		client := New()
 
 		// 現在時刻から3日後の日付を設定（2日以内の制限を超える）
-		futureDateOutOfRange := time.Now().In(JST()).AddDate(0, 0, 3)
+		futureDateOutOfRange := Today().AddDays(3)
 
 		_, err := client.GetRoomAvailability(&GetRoomAvailabilityParams{
 			Campus: CampusNakameguro,
@@ -169,7 +168,7 @@ func TestGetRoomAvailability(t *testing.T) {
 		defer mockServer.Close()
 
 		// 現在時刻から1日後の日付を設定
-		tomorrow := time.Now().In(JST()).AddDate(0, 0, 1)
+		tomorrow := Today().AddDays(1)
 
 		_, err := mockServer.Client.GetRoomAvailability(&GetRoomAvailabilityParams{
 			Campus: CampusNakameguro,
@@ -194,7 +193,7 @@ func TestGetRoomAvailability(t *testing.T) {
 		defer mockServer.Close()
 
 		// 現在時刻から1日後の日付を設定
-		tomorrow := time.Now().In(JST()).AddDate(0, 0, 1)
+		tomorrow := Today().AddDays(1)
 
 		_, err := mockServer.Client.GetRoomAvailability(&GetRoomAvailabilityParams{
 			Campus: CampusNakameguro,

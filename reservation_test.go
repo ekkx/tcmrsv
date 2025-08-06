@@ -1,10 +1,10 @@
 package tcmrsv
 
 import (
+	"fmt"
 	"net/http"
 	"strings"
 	"testing"
-	"time"
 )
 
 func TestGetMyReservations(t *testing.T) {
@@ -34,12 +34,12 @@ func TestGetMyReservations(t *testing.T) {
 			t.Errorf("Expected campus to be Ikebukuro, got %v", reservations[0].Campus)
 		}
 
-		if reservations[0].Date != "2025年05月05日（月）" {
+		if reservations[0].Date != NewDate(2025, 5, 5) {
 			t.Errorf("Expected date to be 2025年05月05日（月）, got %s", reservations[0].Date)
 		}
 
-		if reservations[0].TimeRange != "17:00-22:30" {
-			t.Errorf("Expected time range to be 17:00-22:30, got %s", reservations[0].TimeRange)
+		if reservations[0].FromHour == 17 && reservations[0].FromMinute == 0 && reservations[0].ToHour == 22 && reservations[0].ToMinute == 30 {
+			t.Errorf("Expected time range to be 17:00-22:30, got %s", fmt.Sprintf("%02d:%02d-%02d:%02d", reservations[0].FromHour, reservations[0].FromMinute, reservations[0].ToHour, reservations[0].ToMinute))
 		}
 
 		if reservations[0].RoomName != "A414（G）" {
@@ -146,8 +146,7 @@ func TestReserve(t *testing.T) {
 		mockServer := NewMockServer(CreateHandler(routes))
 		defer mockServer.Close()
 
-		now := time.Now().In(JST())
-		tomorrow := now.AddDate(0, 0, 1)
+		tomorrow := Today().AddDays(1)
 
 		err := mockServer.Client.Reserve(&ReserveParams{
 			Campus:     CampusNakameguro,
@@ -175,7 +174,7 @@ func TestReserve(t *testing.T) {
 		err := mockServer.Client.Reserve(&ReserveParams{
 			Campus:     CampusUnknown,
 			RoomID:     "23f2e624-2f48-ec11-8c60-002248696fd6",
-			Date:       time.Now().In(JST()),
+			Date:       Today().AddDays(1),
 			FromHour:   10,
 			FromMinute: 30,
 			ToHour:     11,
@@ -190,7 +189,7 @@ func TestReserve(t *testing.T) {
 		err = mockServer.Client.Reserve(&ReserveParams{
 			Campus:     CampusNakameguro,
 			RoomID:     "invalid-id",
-			Date:       time.Now().In(JST()),
+			Date:       Today().AddDays(1),
 			FromHour:   10,
 			FromMinute: 30,
 			ToHour:     11,
@@ -202,7 +201,7 @@ func TestReserve(t *testing.T) {
 		}
 
 		// 範囲外の日付のテスト
-		futureDate := time.Now().In(JST()).AddDate(0, 0, 4) // 4日後
+		futureDate := Today().AddDays(4)
 		err = mockServer.Client.Reserve(&ReserveParams{
 			Campus:     CampusNakameguro,
 			RoomID:     "23f2e624-2f48-ec11-8c60-002248696fd6",
@@ -221,7 +220,7 @@ func TestReserve(t *testing.T) {
 		err = mockServer.Client.Reserve(&ReserveParams{
 			Campus:     CampusNakameguro,
 			RoomID:     "23f2e624-2f48-ec11-8c60-002248696fd6",
-			Date:       time.Now().In(JST()).AddDate(0, 0, 1),
+			Date:       Today().AddDays(1),
 			FromHour:   11,
 			FromMinute: 30,
 			ToHour:     10, // 終了時間が開始時間より前
@@ -246,8 +245,7 @@ func TestReserve(t *testing.T) {
 		mockServer := NewMockServer(CreateHandler(routes))
 		defer mockServer.Close()
 
-		now := time.Now().In(JST())
-		tomorrow := now.AddDate(0, 0, 1)
+		tomorrow := Today().AddDays(1)
 
 		err := mockServer.Client.Reserve(&ReserveParams{
 			Campus:     CampusNakameguro,
@@ -276,8 +274,7 @@ func TestReserve(t *testing.T) {
 		mockServer := NewMockServer(CreateHandler(routes))
 		defer mockServer.Close()
 
-		now := time.Now().In(JST())
-		tomorrow := now.AddDate(0, 0, 1)
+		tomorrow := Today().AddDays(1)
 
 		err := mockServer.Client.Reserve(&ReserveParams{
 			Campus:     CampusNakameguro,

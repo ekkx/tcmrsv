@@ -24,8 +24,8 @@ func TestIsIDValid(t *testing.T) {
 }
 
 func TestIsDateWithin2Or3Days(t *testing.T) {
-	base := time.Date(2025, 5, 3, 13, 0, 0, 0, JST())
-	today := time.Date(2025, 5, 3, 12, 0, 0, 0, JST())
+	base := time.Date(2025, 5, 3, 13, 0, 0, 0, jst)
+	today := time.Date(2025, 5, 3, 12, 0, 0, 0, jst)
 	tomorrow := today.AddDate(0, 0, 1)
 	dayAfterTomorrow := today.AddDate(0, 0, 2)
 	threeDaysLater := today.AddDate(0, 0, 3)
@@ -45,17 +45,17 @@ func TestIsDateWithin2Or3Days(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := IsDateWithin2Days(base, tt.date); got != tt.valid {
+			if got := IsDateWithin2Days(base, FromTime(tt.date)); got != tt.valid {
 				t.Errorf("IsDateWithin2Days(%v, %v) = %v; want %v", base, tt.date, got, tt.valid)
 			}
 		})
 	}
 
 	// 午前のケース
-	baseMorning := time.Date(2025, 5, 3, 9, 0, 0, 0, JST())
+	baseMorning := time.Date(2025, 5, 3, 9, 0, 0, 0, jst)
 	twoDaysLater := today.AddDate(0, 0, 2)
 
-	if IsDateWithin2Days(baseMorning, twoDaysLater) != false {
+	if IsDateWithin2Days(baseMorning, FromTime(twoDaysLater)) != false {
 		t.Errorf("Expected false in morning case, got true")
 	}
 }
@@ -85,7 +85,7 @@ func TestIsTimeRangeValid(t *testing.T) {
 }
 
 func TestIsTimeInFuture(t *testing.T) {
-	now := time.Now().In(JST())
+	now := time.Now().In(jst)
 	h := now.Hour()
 	m := now.Minute()
 	currentTotal := h*60 + m
@@ -102,7 +102,7 @@ func TestIsTimeInFuture(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		got := IsTimeInFuture(tt.fromH, tt.fromM, now)
+		got := IsTimeInFuture(tt.fromH, tt.fromM, FromTime(now))
 		if got != tt.want {
 			t.Errorf("IsTimeInFuture(%02d:%02d) = %v; want %v (current: %02d:%02d, total=%d)",
 				tt.fromH, tt.fromM, got, tt.want, h, m, currentTotal)

@@ -11,11 +11,11 @@ func IsIDValid(ID string) bool {
 	return idRegex.MatchString(ID)
 }
 
-func IsDateWithin2Days(now, date time.Time) bool {
-	today := time.Date(now.Year(), now.Month(), now.Day(), 0, 0, 0, 0, JST())
+func IsDateWithin2Days(now time.Time, date Date) bool {
+	today := time.Date(now.Year(), now.Month(), now.Day(), 0, 0, 0, 0, jst)
 
 	// 3日後の予約が解放されるのは、午後12時から
-	isMorning := now.Hour() < 12
+	isMorning := today.Hour() < 12
 
 	var endDate time.Time
 	if isMorning {
@@ -24,7 +24,7 @@ func IsDateWithin2Days(now, date time.Time) bool {
 		endDate = today.AddDate(0, 0, 3)
 	}
 
-	return date.After(today) && date.Before(endDate)
+	return date.IsAfter(FromTime(today)) && date.IsBefore(FromTime(endDate))
 }
 
 func IsTimeRangeValid(fromHour, fromMinute, toHour, toMinute int) bool {
@@ -54,9 +54,9 @@ func IsTimeRangeValid(fromHour, fromMinute, toHour, toMinute int) bool {
 	return toTotal > fromTotal
 }
 
-func IsTimeInFuture(fromHour, fromMinute int, date time.Time) bool {
-	now := time.Now().In(JST())
-	if date.Year() == now.Year() && date.Month() == now.Month() && date.Day() == now.Day() {
+func IsTimeInFuture(fromHour, fromMinute int, date Date) bool {
+	now := time.Now().In(jst)
+	if date.Equals(FromTime(now)) {
 		currentTotal := now.Hour()*60 + now.Minute()
 		fromTotal := fromHour*60 + fromMinute
 		return fromTotal >= currentTotal

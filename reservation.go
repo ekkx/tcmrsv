@@ -5,6 +5,7 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"strconv"
 	"strings"
 	"time"
 
@@ -108,9 +109,35 @@ func (c *Client) GetMyReservations() ([]Reservation, error) {
 						}
 						currentReservation.CampusName = text
 					case "res-date":
-						currentReservation.Date = text
+						layout := "2006年01月02日"
+						text = strings.SplitN(text, "（", 2)[0]
+						parsedDate, err := time.Parse(layout, text)
+						if err != nil {
+							currentReservation.Date = Date{} // Fallback to raw text if parsing fails
+						} else {
+							currentReservation.Date = FromTime(parsedDate)
+						}
 					case "res-time":
-						currentReservation.TimeRange = text
+						times := strings.Split(text, "-")
+						if len(times) != 2 {
+							continue // Invalid time format
+						}
+						fromTime := strings.Split(times[0], ":")
+						toTime := strings.Split(times[1], ":")
+						if len(fromTime) != 2 || len(toTime) != 2 {
+							continue // Invalid time format
+						}
+						fromHour, err1 := strconv.Atoi(fromTime[0])
+						fromMinute, err2 := strconv.Atoi(fromTime[1])
+						toHour, err3 := strconv.Atoi(toTime[0])
+						toMinute, err4 := strconv.Atoi(toTime[1])
+						if err1 != nil || err2 != nil || err3 != nil || err4 != nil {
+							continue // Invalid time format
+						}
+						currentReservation.FromHour = fromHour
+						currentReservation.FromMinute = fromMinute
+						currentReservation.ToHour = toHour
+						currentReservation.ToMinute = toMinute
 					case "res-room":
 						currentReservation.RoomName = text
 					}
@@ -133,7 +160,7 @@ func (c *Client) GetMyReservations() ([]Reservation, error) {
 type ReserveParams struct {
 	Campus     Campus
 	RoomID     string
-	Date       time.Time
+	Date       Date
 	FromHour   int
 	FromMinute int
 	ToHour     int
@@ -147,7 +174,7 @@ func (c *Client) Reserve(params *ReserveParams) error {
 	if !IsIDValid(params.RoomID) {
 		return ErrInvalidIDFormat
 	}
-	if !IsDateWithin2Days(time.Now().In(JST()), params.Date) {
+	if !IsDateWithin2Days(time.Now().In(jst), params.Date) {
 		return ErrDateOutOfRange
 	}
 	if !IsTimeRangeValid(params.FromHour, params.FromMinute, params.ToHour, params.ToMinute) {
@@ -162,12 +189,10 @@ func (c *Client) Reserve(params *ReserveParams) error {
 		return err
 	}
 
-	jstDate := time.Date(params.Date.Year(), params.Date.Month(), params.Date.Day(), 0, 0, 0, 0, JST())
-
 	q := u.Query()
 	q.Set("campus", string(params.Campus))
 	q.Set("room", params.RoomID)
-	q.Set("ymd", jstDate.Format("2006/01/02 15:04:05"))
+	q.Set("ymd", params.Date.ToTime().Format("2006/01/02 15:04:05"))
 	q.Set("fromh", fmt.Sprintf("%02d", params.FromHour))
 	q.Set("fromm", fmt.Sprintf("%02d", params.FromMinute))
 	q.Set("toh", fmt.Sprintf("%02d", params.ToHour))

@@ -60,7 +60,10 @@ type Reservation struct {
 	ID         string
 	Campus     Campus
 	CampusName string
-	Date       string
+	Date       Date
 	RoomName   string
-	TimeRange  string
+	FromHour   int
+	FromMinute int
+	ToHour     int
+	ToMinute   int
 }
