@@ -38,6 +38,20 @@ func main() {
 
 	fmt.Println("Login successful!")
 
+	if err = client.Reserve(&tcmrsv.ReserveParams{
+		Campus:     tcmrsv.CampusNakameguro,
+		RoomID:     "2df2e624-2f48-ec11-8c60-002248696fd6",
+		Date:       tcmrsv.Today().AddDays(2),
+		FromHour:   12,
+		FromMinute: 0,
+		ToHour:     14,
+		ToMinute:   0,
+	}); err != nil {
+		panic(err)
+	}
+
+	fmt.Println("Reservation successful!")
+
 	reservations, err := client.GetMyReservations()
 	if err != nil {
 		panic(err)
